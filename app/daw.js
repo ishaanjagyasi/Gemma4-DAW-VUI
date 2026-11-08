@@ -104,6 +104,7 @@ export function createDaw({ onEvent = () => {} } = {}) {
   const engine = createEngine({ getState: () => state, getTransport: () => T });
   const work = $('#work'), scroller = $('#arrScroll'), inner = $('#arrInner'), devicesEl = $('#devices'), stripsEl = $('#strips');
   let meters = new Map(), playhead = null, markerEl = null, drag = null, lastDown = {}, clipboard = null;
+  let flash = null; // the track (or 'tempo') the assistant just changed, highlighted for a moment
 
   const byId = id => state.tracks.find(t => t.id === id);
   const ret = id => state.returns.find(r => r.id === id);
@@ -749,7 +750,7 @@ export function createDaw({ onEvent = () => {} } = {}) {
   };
 
   function trackRow(t, i, W) {
-    const row = h('div', `trow track${sel.tracks.has(t.id) ? ' selected' : ''}${t.on ? '' : ' off'}`);
+    const row = h('div', `trow track${sel.tracks.has(t.id) ? ' selected' : ''}${t.on ? '' : ' off'}${flash === t.id ? ' flash' : ''}`);
     row.style.setProperty('--c', t.color);
     const lane = info(h('div', 'lane'), 'Arrangement Track', 'Shows this track\'s clips over time. Click to place the insert marker (where playback starts and Cmd+V pastes). Drag left/right to select time; drag up/down too to select it on several tracks. Then cut, copy, paste, duplicate, delete, split or loop it (right-click for the full list). Positions snap to the grid; hold Cmd to move freely.');
     lane.style.width = `${W}px`;
@@ -889,7 +890,7 @@ export function createDaw({ onEvent = () => {} } = {}) {
   }
   function channelStrip(t, i) {
     const isRet = i < 0, selected = isRet ? sel.anchor === t.id : sel.tracks.has(t.id);
-    const el = h('div', `mstrip${selected ? ' selected' : ''}${t.on ? '' : ' off'}`);
+    const el = h('div', `mstrip${selected ? ' selected' : ''}${t.on ? '' : ' off'}${flash === t.id ? ' flash' : ''}`);
     el.style.setProperty('--c', t.color);
     const title = info(h('div', 'stitle', { textContent: t.name }), isRet ? 'Return Track Title Bar' : 'Track Title Bar', 'Click to select. Double-click to rename. Right-click for more options.');
     title.dataset.sn = t.id;
@@ -981,6 +982,7 @@ export function createDaw({ onEvent = () => {} } = {}) {
 
   function renderCtrl() {
     vfield($('#tempo'), tempoField);
+    $('#tempo').classList.toggle('flash', flash === 'tempo');
     $('#playBtn').classList.toggle('on', engine.playing);
     $('#recBtn').classList.toggle('on', !!T.rec);
     $('#loopBtn').classList.toggle('on', T.loop);
@@ -1153,6 +1155,39 @@ export function createDaw({ onEvent = () => {} } = {}) {
       if (transport !== before.transport || restart) {
         if (transport === 'recording') { if (!T.rec) startRecord(); }
         else if (transport === 'playing') { if (T.rec) endRecord(); if (engine.playing) engine.play(T.marker); else play(); }
+        else if (engine.playing) stop();
+      }
+      return { errors, changes };
+    },
+    // Applies the assistant's tool calls one at a time, the way Live shows an edit happening: the track each call
+    // changes is selected (so the Device View shows its effects) and highlighted, and onStep gets that call's changes
+    // as they happen. The whole request is still one undoable step.
+    async applyCallsStepwise(calls, { delay = 600, onStep = () => {} } = {}, source = 'assistant') {
+      const before = session(), start = snap(), errors = [];
+      for (const c of calls ?? []) {
+        const prev = session(), { state: out, errors: e } = applyCalls(prev, [c]), changes = describeChanges(prev, out);
+        errors.push(...e);
+        const { metronome, transport, marker, loop, view: _, ...core } = out;
+        state = core;
+        Object.assign(T, { metro: metronome, loop: loop.on, loopStart: loop.start, loopEnd: loop.end });
+        const old = new Map(prev.tracks.map(t => [t.id, JSON.stringify(t)]));
+        const hit = state.tracks.find(t => old.get(t.id) !== JSON.stringify(t));
+        if (hit) {
+          const had = new Set(prev.tracks.find(t => t.id === hit.id)?.devices.map(d => d.id));
+          sel = { tracks: new Set([hit.id]), anchor: hit.id, clip: null, device: hit.devices.find(d => !had.has(d.id))?.id ?? null, range: null };
+        }
+        flash = hit?.id ?? (prev.tempo !== state.tempo ? 'tempo' : null);
+        changed();
+        onStep(changes, e);
+        if (changes.length || e.length) await new Promise(r => setTimeout(r, delay));
+        flash = null;
+      }
+      const changes = describeChanges(before, session());
+      finish(start, 'Assistant', ['assistant', { source, calls, errors, changes }]);
+      const after = session();
+      if (after.transport !== before.transport) {
+        if (after.transport === 'recording') { if (!T.rec) startRecord(); }
+        else if (after.transport === 'playing') { if (T.rec) endRecord(); if (!engine.playing) play(); }
         else if (engine.playing) stop();
       }
       return { errors, changes };

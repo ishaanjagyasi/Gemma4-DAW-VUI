@@ -2,7 +2,8 @@
 node_modules/
 # course material
 docs/HAI FA 26 Assignment 2 Instruction.pdf
-# the study set and its results stay private until the A3 study is done (scripts/gen.js and scripts/eval.js recreate them)
+# the study set and its results stay private until the A3 study is done (scripts/gen.js, scripts/gen-study.js and scripts/eval.js recreate them)
 data/trials.json
 data/trials.csv
+data/study.json
 results/

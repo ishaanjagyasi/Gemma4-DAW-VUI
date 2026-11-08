@@ -1,6 +1,7 @@
 // Web Audio engine: synthesised parts for the demo clips and browser samples, Live-style audio effects,
 // return tracks with sends, arrangement playback (loop, metronome), sample preview and post-fader meter levels.
 import { VOL_MIN } from '../lib/core.js';
+import { deviceDefaults } from '../lib/catalog.js';
 export { DEVICES, SAMPLES, deviceDefaults, fmtParam } from '../lib/catalog.js';
 
 // Step patterns (16ths in a bar) and decay in steps; also used to draw the clip waveforms.
@@ -101,10 +102,11 @@ export function createEngine({ getState, getTransport }) {
   function rewire(c, t) {
     c.input.disconnect();
     for (const d of c.devs.values()) d.output.disconnect();
-    for (const id of [...c.devs.keys()]) if (!t.devices.some(d => d.id === id)) c.devs.delete(id);
+    // a device id can come back with another effect on it (ids restart with each new session), so it is rebuilt then
+    for (const [id, dev] of [...c.devs]) if (!t.devices.some(d => d.id === id && d.type === dev.type)) c.devs.delete(id);
     let node = c.input;
     for (const d of t.devices) {
-      if (!c.devs.has(d.id)) c.devs.set(d.id, makeDevice(d.type));
+      if (!c.devs.has(d.id)) c.devs.set(d.id, Object.assign(makeDevice(d.type), { type: d.type }));
       if (!d.on) continue;
       const dev = c.devs.get(d.id);
       node.connect(dev.input); node = dev.output;
@@ -112,9 +114,9 @@ export function createEngine({ getState, getTransport }) {
     node.connect(c.fader);
   }
   function strip(t, audible, now) {
-    const c = channel(t.id), sig = t.devices.map(d => `${d.id}:${d.on}`).join();
+    const c = channel(t.id), sig = t.devices.map(d => `${d.id}:${d.type}:${d.on}`).join();
     if (sig !== c.sig) { rewire(c, t); c.sig = sig; }
-    for (const d of t.devices) c.devs.get(d.id).set(d.params);
+    for (const d of t.devices) c.devs.get(d.id).set({ ...deviceDefaults(d.type), ...d.params }); // a missing setting plays at its default
     c.fader.gain.setTargetAtTime(audible ? dbGain(t.vol) : 0, now, 0.015);
     c.panner.pan.setTargetAtTime(t.pan / 50, now, 0.015);
     return c;

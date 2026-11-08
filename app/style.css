@@ -246,3 +246,54 @@ dialog { background: var(--panel); color: var(--text); border: 1px solid var(--l
 dialog::backdrop { background: #0008; }
 dialog h3 { margin: 0 0 10px; font-size: 13px; }
 dialog label { display: block; margin: 8px 0; }
+
+/* study (app/study.js): welcome/questionnaire card, request bar, practice checklist and how-to tips */
+#studyOverlay { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; background: #000b; padding: 16px; }
+#studyCard { width: min(620px, 100%); max-height: 100%; overflow: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 20px 26px; font-size: 14px; line-height: 1.5; user-select: text; }
+#studyCard h2 { margin: 0 0 12px; font-size: 19px; color: var(--hi); }
+#studyCard p { margin: 0 0 10px; }
+#studyCard .small { font-size: 12px; }
+#studyCard .dim { color: var(--dim); }
+#studyCard .field { font-size: 14px; padding: 5px 8px; color: var(--hi); }
+#studyCard .stack { display: flex; flex-direction: column; gap: 4px; margin: 12px 0; }
+#studyCard .check { display: flex; align-items: center; gap: 6px; margin: 10px 0; }
+#studyCard textarea { resize: vertical; font: inherit; }
+#studyCard fieldset { border: 0; border-top: 1px solid #4a4a4a; margin: 0; padding: 10px 0; }
+#studyCard legend { padding: 0; margin-bottom: 8px; }
+.scale { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--dim); }
+.scale span { width: 80px; } .scale span:last-child { text-align: right; }
+.scale label { flex: 1; display: flex; flex-direction: column; align-items: center; font-size: 11px; }
+.scale i { font-style: normal; }
+.opts { display: flex; gap: 18px; }
+.tbtn.primary { background: var(--yellow); color: #111; border: 0; padding: 7px 18px; font-size: 14px; font-weight: 600; border-radius: 3px; cursor: pointer; }
+.tbtn.primary:disabled { opacity: .4; cursor: default; }
+@media (max-width: 560px) { .scale span { display: none; } }
+
+body.study #trialBar { font-size: 15px; padding: 10px 14px; background: #24405c; }
+body.study #trialText { line-height: 1.4; }
+body.study #doneBtn { background: var(--yellow); color: #111; border: 0; padding: 6px 16px; font-size: 14px; font-weight: 600; border-radius: 3px; }
+body.study #doneBtn:disabled { opacity: .4; }
+body.cond-ai #trialText { user-select: none; } /* the request is said or typed to the assistant, not pasted */
+body.study .model { display: none; }
+body.cond-noai #assistant > :not(#guide) { display: none; }
+#micBtn.on { background: var(--red); color: #fff; }
+
+#guide { margin-top: 8px; font-size: 12px; line-height: 1.4; }
+body.cond-ai #guide { border-top: 1px solid var(--line); padding-top: 8px; }
+#guide h3 { margin: 0 0 6px; font-size: 13px; color: var(--hi); }
+#guide ol { margin: 0; padding-left: 20px; }
+#guide li { margin-bottom: 8px; list-style: decimal; }
+#guide li p { margin: 2px 0 0; color: var(--dim); }
+#guide li.done b { color: var(--green); }
+#guide li.done b::after { content: ' ✓'; }
+#guide dt { color: var(--hi); font-weight: 600; margin-top: 6px; }
+#guide dd { margin: 0; color: var(--dim); }
+#guide p { margin: 0 0 8px; color: var(--dim); }
+#guide summary { cursor: pointer; color: var(--hi); font-weight: 600; font-size: 13px; margin: 4px 0; }
+.steps { padding-left: 20px; }
+.steps li { list-style: decimal; margin-bottom: 6px; }
+#typed.pulse { outline: 2px solid var(--yellow); animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { outline-color: transparent; } }
+/* the track or tempo the assistant just changed, highlighted as its change is applied */
+.trow.flash .hdr, .mstrip.flash, #tempo.flash { animation: flash .9s ease-out; }
+@keyframes flash { from { box-shadow: inset 0 0 0 2px var(--yellow); background-color: #5a4a1a; } }

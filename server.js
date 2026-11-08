@@ -39,7 +39,7 @@ createServer(async (req, res) => {
   }
   if (url.pathname === '/save' && req.method === 'POST') {
     let body = '';
-    for await (const c of req) if ((body += c).length > 2e6) return res.writeHead(413).end('too large');
+    for await (const c of req) if ((body += c).length > 2e7) return res.writeHead(413).end('too large');
     try {
       const { name, content } = JSON.parse(body);
       const file = String(name).replace(/[^\w.-]/g, '_');

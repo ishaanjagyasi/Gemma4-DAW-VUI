@@ -37,14 +37,13 @@
     <span class="lbl dim" data-it="Key Map Mode Switch" data-ih="Maps computer keys to controls. Not available in this prototype.">KEY</span>
     <span class="lbl dim" data-it="MIDI Map Mode Switch" data-ih="Maps MIDI controllers to controls. Not available in this prototype.">MIDI</span>
     <span id="cpu" class="field ro" data-it="CPU Load Meter" data-ih="Shows how much processing power the audio engine uses.">2 %</span>
-    <button id="studyBtn" class="tbtn" data-it="Study" data-ih="Opens the study controls. For the experimenter only.">Study</button>
   </div>
 </header>
 
 <div id="trialBar" hidden>
   <span id="trialNum"></span>
   <span id="trialText"></span>
-  <button id="doneBtn" class="tbtn">Done <kbd>Ctrl ↵</kbd></button>
+  <button id="doneBtn" class="tbtn">Done</button>
 </div>
 
 <main id="work">
@@ -66,7 +65,11 @@
   <section id="detail"><div id="devices"></div></section>
   <aside id="assistant">
     <div class="ahead">Assistant <span id="aiState" class="pill">Ready</span></div>
-    <input id="typed" class="field" placeholder="Type a command and press Enter" data-it="Assistant" data-ih="Tell the assistant what to change, in your own words (e.g. &quot;bring the kick down a touch and add reverb to the snare&quot;). It sees the current session, including the selected track and time selection, and makes the changes. [Enter] sends.">
+    <div class="row">
+      <input id="typed" class="field" placeholder="Type a request and press Enter" data-it="Assistant" data-ih="Tell the assistant what to change, in your own words (e.g. &quot;turn the piano down to -10 dB and put a reverb on the vocals&quot;). It sees the current session and makes the changes. [Enter] sends.">
+      <button id="micBtn" class="tbtn" hidden data-it="Speak" data-ih="Click and say your request; it keeps listening through pauses. Click again when you are done and the request is sent.">🎤</button>
+      <button id="micCancel" class="tbtn" hidden data-it="Start over" data-ih="Clears what was heard so far and keeps listening, so you can say the request again.">✕</button>
+    </div>
     <label class="lbl2">You said</label>
     <div id="transcript" class="box">—</div>
     <label class="lbl2">Changes made</label>
@@ -75,8 +78,8 @@
     <div class="row">
       <button id="undoBtn" class="tbtn" disabled data-it="Undo Assistant" data-ih="Reverts everything the assistant's last request changed, in one step. [Cmd+Z] also works.">Undo</button>
     </div>
-    <div class="row small"><span>Model</span><input id="model" class="field" value="gemma4-mixer"></div>
-  </aside>
+    <div class="row small model"><span>Model</span><input id="model" class="field" value="gemma4-mixer"></div>
+    <div id="guide" hidden></div>
   </aside>
 </main>
 
@@ -91,17 +94,7 @@
 
 <div id="menu" hidden></div>
 
-<dialog id="studyDlg">
-  <form method="dialog">
-    <h3>Study session</h3>
-    <label>Participant ID <input id="pid" class="field" required></label>
-    <label>Condition
-      <select id="cond" class="field"><option value="mouse">Mouse + keys</option><option value="voice">Voice + AI</option></select>
-    </label>
-    <label>Trials <input id="from" class="field num" type="number" value="1" min="1"> to <input id="to" class="field num" type="number" value="10" min="1"></label>
-    <div class="row"><button id="startBtn" class="tbtn" value="start">Start</button><button class="tbtn" value="cancel" formnovalidate>Cancel</button><button id="exportBtn" class="tbtn" type="button">Export</button></div>
-  </form>
-</dialog>
+<div id="studyOverlay" hidden><div id="studyCard"></div></div>
 
 <script type="module" src="app.js"></script>
 </body>
