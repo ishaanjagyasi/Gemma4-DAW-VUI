@@ -264,13 +264,14 @@ dialog label { display: block; margin: 8px 0; }
 .scale span { width: 80px; } .scale span:last-child { text-align: right; }
 .scale label { flex: 1; display: flex; flex-direction: column; align-items: center; font-size: 11px; }
 .scale i { font-style: normal; }
-.opts { display: flex; gap: 18px; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px 18px; }
 .tbtn.primary { background: var(--yellow); color: #111; border: 0; padding: 7px 18px; font-size: 14px; font-weight: 600; border-radius: 3px; cursor: pointer; }
 .tbtn.primary:disabled { opacity: .4; cursor: default; }
+.tbtn.primary.alt { background: #4a4a4a; color: #eee; }
 @media (max-width: 560px) { .scale span { display: none; } }
 
 body.study #trialBar { font-size: 15px; padding: 10px 14px; background: #24405c; }
-body.study #trialText { line-height: 1.4; }
+body.study #trialText { line-height: 1.4; white-space: pre-line; columns: 2; column-gap: 28px; }
 body.study #doneBtn { background: var(--yellow); color: #111; border: 0; padding: 6px 16px; font-size: 14px; font-weight: 600; border-radius: 3px; }
 body.study #doneBtn:disabled { opacity: .4; }
 body.cond-ai #trialText { user-select: none; } /* the request is said or typed to the assistant, not pasted */

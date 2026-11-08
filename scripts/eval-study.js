@@ -12,13 +12,15 @@ process.chdir(new URL('..', import.meta.url).pathname); // paths below are relat
 
 const opt = (k, d) => { const i = process.argv.indexOf(`--${k}`); return i > 0 ? process.argv[i + 1] : d; };
 const MODEL = opt('model', 'gemma4-mixer'), HOST = opt('host', process.env.OLLAMA || 'http://127.0.0.1:11434');
+// participants can't paste the numbered list, so the model gets the commands as one line, the way they are typed or said
+const typed = text => text.replace(/^\d+\. /gm, '').split('\n').join(', ');
 const pool = JSON.parse(readFileSync('data/study.json', 'utf8')).flatMap(p => p.versions), rows = [];
 
 for (const t of pool) {
   const t0 = Date.now();
   const res = await fetch(`${HOST}/api/chat`, {
     method: 'POST', headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ model: MODEL, messages: messages(t.initial, t.instruction), tools: TOOLS, stream: false, think: false, keep_alive: '30m', options: { temperature: 0, num_ctx: 8192 } }),
+    body: JSON.stringify({ model: MODEL, messages: messages(t.initial, typed(t.instruction)), tools: TOOLS, stream: false, think: false, keep_alive: '30m', options: { temperature: 0, num_ctx: 8192 } }),
   });
   if (!res.ok) throw new Error(`Ollama ${res.status}: ${await res.text()}`);
   const { calls, content, parseError } = readReply((await res.json()).message);
