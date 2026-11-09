@@ -1,4 +1,4 @@
-# Gemma 4 Mixer Assistant
+# Gemma 4 context-aware DAW VUI
 
 Course project for HAI FA26 (Human-AI Interaction), Assignment 2.
 
