@@ -55,7 +55,7 @@ async function ask(text, via) {
 }
 
 $('#typed').addEventListener('keydown', e => {
-  if (e.key !== 'Enter' || !e.target.value.trim()) return;
+  if (e.key !== 'Enter' || !e.target.value.trim() || e.target.readOnly) return; // read-only in the study: spoken requests only
   ask(e.target.value.trim(), $('#typed').dataset.via || 'typed'); e.target.value = ''; delete $('#typed').dataset.via;
 });
 $('#undoBtn').onclick = () => { daw.undo(); $('#undoBtn').disabled = true; $('#plan').append(li('Undone.', 'err')); hooks.assistant({ type: 'undo' }); };
@@ -74,11 +74,11 @@ if (Speech) {
   const show = on => { want = on; mic.classList.toggle('on', on); cancel.hidden = !on; };
   mic.hidden = false;
   mic.onclick = () => {
-    if (!want) { show(true); box.value = ''; listen(); hooks.assistant({ type: 'mic', action: 'start' }); }
+    if (!want) { show(true); box.value = ''; listen(); mic.classList.remove('pulse'); hooks.assistant({ type: 'mic', action: 'start' }); }
     else { show(false); send = true; rec.stop(); } // the last words arrive before the session ends, then it is sent
   };
   cancel.onclick = () => { box.value = ''; base = ''; rec.abort(); hooks.assistant({ type: 'mic', action: 'start over' }); }; // still wanted: onend listens again
-  box.addEventListener('keydown', e => { if (e.key === 'Enter' && want) { show(false); rec.abort(); } }, true);
+  box.addEventListener('keydown', e => { if (e.key === 'Enter' && want && !box.readOnly) { show(false); rec.abort(); } }, true);
   rec.onend = () => {
     if (want) return listen();
     if (send && box.value.trim()) { const text = box.value.trim(); box.value = ''; delete box.dataset.via; ask(text, 'voice'); }

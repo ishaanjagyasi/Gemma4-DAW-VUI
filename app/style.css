@@ -254,6 +254,7 @@ dialog label { display: block; margin: 8px 0; }
 #studyCard p { margin: 0 0 10px; }
 #studyCard .small { font-size: 12px; }
 #studyCard .dim { color: var(--dim); }
+#studyCard .warn { color: var(--red); }
 #studyCard .field { font-size: 14px; padding: 5px 8px; color: var(--hi); }
 #studyCard .stack { display: flex; flex-direction: column; gap: 4px; margin: 12px 0; }
 #studyCard .check { display: flex; align-items: center; gap: 6px; margin: 10px 0; }
@@ -293,7 +294,7 @@ body.cond-ai #guide { border-top: 1px solid var(--line); padding-top: 8px; }
 #guide summary { cursor: pointer; color: var(--hi); font-weight: 600; font-size: 13px; margin: 4px 0; }
 .steps { padding-left: 20px; }
 .steps li { list-style: decimal; margin-bottom: 6px; }
-#typed.pulse { outline: 2px solid var(--yellow); animation: pulse 1.2s ease-in-out infinite; }
+#typed.pulse, #micBtn.pulse { outline: 2px solid var(--yellow); animation: pulse 1.2s ease-in-out infinite; }
 @keyframes pulse { 50% { outline-color: transparent; } }
 /* the track or tempo the assistant just changed, highlighted as its change is applied */
 .trow.flash .hdr, .mstrip.flash, #tempo.flash { animation: flash .9s ease-out; }

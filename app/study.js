@@ -1,5 +1,5 @@
 // The Assignment 3 study, one continuous session: welcome and consent, then two rounds in random order, by hand and
-// with the assistant. Each round has a guided practice, 3 timed requests, each followed by ratings (SEQ and confidence;
+// with the assistant. Two more links run a single round: ?only=gui (by hand) and ?only=voice (with the assistant). Each round has a guided practice, 3 timed requests, each followed by ratings (SEQ and confidence;
 // in the AI round, confidence in the assistant, what had to be redone and how long checking took), and a questionnaire (NASA-TLX, sense of control and UMUX-Lite, plus two items on the assistant in the AI round).
 // The requests come from data/study.json as matched pairs: each pair's
 // two versions ask for the same kinds and number of changes, one is done in each round. Then a preference question,
@@ -83,18 +83,24 @@ export async function startStudy({ daw, hooks }) {
   const pid = q.get('pid') || Math.random().toString(36).slice(2, 8).toUpperCase();
   // which version comes first: random, or set with ?first=ai / ?first=noai to balance the groups by hand
   const first = ['ai', 'noai'].includes(q.get('first')) ? q.get('first') : Math.random() < 0.5 ? 'ai' : 'noai';
-  const order = first === 'ai' ? ['ai', 'noai'] : ['noai', 'ai'];
+  // ?only=gui or ?only=voice: just that one round (a separate link for each interface)
+  const only = ['gui', 'voice'].includes(q.get('only')) ? q.get('only') : null;
+  const order = only ? [only === 'voice' ? 'ai' : 'noai'] : first === 'ai' ? ['ai', 'noai'] : ['noai', 'ai'];
+  const single = order.length === 1, voice = order.includes('ai');
   // 3 matched pairs (2 standard, 1 hard, different jobs); of each pair one version is done with the assistant and the
   // other by hand, which one at random
   const used = new Set(), pickPair = set => { const p = shuffle(pairs.filter(x => x.set === set && !used.has(x.scenario)))[0] ?? shuffle(pairs.filter(x => x.set === set && !chosenIds.has(x.id)))[0]; used.add(p.scenario); chosenIds.add(p.id); return p; }, chosenIds = new Set();
   const chosen = [pickPair('standard'), pickPair('standard'), pickPair('hard')].map(p => { const [a, b] = shuffle([...p.versions]); return { pair: p.id, ai: a, noai: b }; });
-  const rec = { pid, name: '', order, started: new Date().toISOString(), userAgent: navigator.userAgent, blocks: {}, final: null, finished: null };
+  const rec = { pid, name: '', mode: only ?? 'continuous', order, started: new Date().toISOString(), userAgent: navigator.userAgent, blocks: {}, final: null, finished: null };
   let cur = null; // the step being timed: { events, ai, t0 }
   hooks.event = (type, data) => cur?.events.push({ t: Math.round(performance.now() - cur.t0), type, data });
   hooks.assistant = entry => cur?.ai.push({ t: Math.round(performance.now() - cur.t0), ...entry });
 
   document.body.classList.add('study');
-  const save = () => fetch('/save', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ name: `${pid}.json`, content: JSON.stringify(rec, null, 1) }) })
+  // requests to the assistant are spoken only (a voice interface): the box shows what was heard and can't be typed in
+  Object.assign($('#typed'), { readOnly: true, placeholder: 'Click 🎤 and say your request' });
+  $('#typed').dataset.ih = 'Shows what the assistant heard. Click 🎤, say your request, and click 🎤 again to send it. ✕ clears it so you can say it again.';
+  const save = () => fetch('/save', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ name: `${only ? `${only}-` : ''}${pid}.json`, content: JSON.stringify(rec, null, 1) }) })
     .catch(e => console.error('save failed', e));
   // any script error is kept in the record (and saved), so a session that stalls can be traced afterwards
   rec.errors = [];
@@ -141,19 +147,28 @@ export async function startStudy({ daw, hooks }) {
   // ---------- 1. welcome and consent ----------
   await new Promise(res => {
     const name = h('input', { className: 'field', placeholder: 'Your name or initials', required: true });
-    const agree = h('input', { type: 'checkbox' }), go = button('Start', () => {
+    // one round is spoken, so speech recognition and the microphone are checked now rather than halfway through
+    const canHear = !voice || !!(window.SpeechRecognition || window.webkitSpeechRecognition);
+    const warn = h('p', { className: 'warn', hidden: canHear, textContent: 'This browser cannot recognise speech. Please open this page in Google Chrome on a computer.' });
+    const agree = h('input', { type: 'checkbox' }), go = button('Start', async () => {
       if (!name.value.trim()) return name.focus();
+      if (voice) try { (await navigator.mediaDevices.getUserMedia({ audio: true })).getTracks().forEach(t => t.stop()); }
+      catch { warn.textContent = 'The microphone could not be used. Allow it with the icon at the left of the address bar (on a Mac, Chrome also needs it in System Settings > Privacy & Security > Microphone), then click Start again.'; warn.hidden = false; return; }
       rec.name = name.value.trim(); hide(); res();
     });
-    go.disabled = true; agree.onchange = () => (go.disabled = !agree.checked);
+    go.disabled = true; agree.onchange = () => (go.disabled = !agree.checked || !canHear);
     show(
       h('h2', { textContent: 'Music mixing study' }),
       h('p', { textContent: 'You will use a simple music app (like the ones producers use) to carry out requests from a music producer, such as turning instruments down or adding effects. No music knowledge is needed: a short practice shows you everything first.' }),
-      h('p', { innerHTML: `There are two rounds: one where you make every change <b>by hand</b>, and one where an <b>AI assistant</b> can make the changes for you. Each round has a practice, ${chosen.length} timed requests and a few questions. It takes about 25 minutes in all.` }),
+      single
+        ? h('p', { innerHTML: `${voice ? 'You <b>say each request out loud</b> to an AI assistant, which makes the changes for you.' : 'You make every change <b>by hand</b>, with the mouse and keyboard.'} There is a practice, ${chosen.length} timed requests and a few questions. It takes about 12 minutes in all.` })
+        : h('p', { innerHTML: `There are two rounds: one where you make every change <b>by hand</b>, and one where you <b>say each request out loud</b> to an AI assistant, which makes the changes for you. Each round has a practice, ${chosen.length} timed requests and a few questions. It takes about 25 minutes in all.` }),
+      h('p', { innerHTML: voice ? '<b>You need:</b> Google Chrome on a computer, a working microphone, and a quiet place where you can speak out loud.' : '<b>You need:</b> a computer with a mouse or trackpad (Google Chrome works best).' }),
       h('p', { textContent: 'Work accurately: a request counts as done when every change is exactly right and nothing else changed.' }),
-      h('p', { className: 'small', textContent: 'We record your actions in the app, your time, your answers and (with the assistant) what you asked it and what it did. Your name is only used to tell participants apart and is not published. You can stop at any time by closing the page.' }),
+      h('p', { className: 'small', textContent: (voice ? 'We record your actions in the app, your time, your answers and (with the assistant) the text of what you said and what it did. To turn your speech into text, Chrome sends the audio to Google\'s speech service; we do not keep any audio.' : 'We record your actions in the app, your time and your answers.') + ' Your name is only used to tell participants apart and is not published. You can stop at any time by closing the page.' }),
       h('label', { className: 'stack' }, 'Name or initials', name),
       h('label', { className: 'check' }, agree, ' I agree to take part'),
+      warn,
       h('div', { className: 'row' }, go),
       h('p', { className: 'small dim', textContent: `Participant ${pid}` }),
     );
@@ -168,15 +183,15 @@ export async function startStudy({ daw, hooks }) {
 
     // guided practice
     await screen(
-      h('h2', { textContent: `Round ${round + 1} of 2: ${ai ? 'with the AI assistant' : 'by hand'}` }),
+      h('h2', { textContent: single ? (ai ? 'Speaking to the AI assistant' : 'Working by hand') : `Round ${round + 1} of 2: ${ai ? 'with the AI assistant' : 'by hand'}` }),
       ...(ai ? [
-        h('p', { textContent: 'In this round an AI assistant (the panel on the right) makes the changes for you. First a practice request, not timed. Every request works the same way:' }),
+        h('p', { textContent: 'Here you speak to an AI assistant (the panel on the right), and it makes the changes for you. There is no typing to the assistant: every request is said out loud. First a practice request, not timed. Every request works the same way:' }),
         h('ol', { className: 'steps' },
           h('li', { innerHTML: '<b>Read the request</b> in the blue bar at the top.' }),
-          h('li', { innerHTML: '<b>Tell the assistant</b> in the box at the top right: type it in your own words and press Enter, or click 🎤, say it, and click 🎤 again to send it (✕ starts over). You can ask for everything at once.' }),
+          h('li', { innerHTML: '<b>Say it to the assistant</b>: click 🎤 at the top right, say the request in your own words, and click 🎤 again to send it. The box shows what was heard; if it heard you wrong, click ✕ and say it again. You can ask for everything at once.' }),
           h('li', { innerHTML: '<b>Watch and check</b>: the assistant makes the changes one by one and lists each under <b>Changes made</b>. If something is wrong, click <b>Undo</b> and ask again, or fix it by hand.' }),
           h('li', { innerHTML: 'Click <b>Done</b> at the top right.' })),
-      ] : [h('p', { textContent: 'In this round you make every change yourself with the mouse and keyboard. First a practice request, not timed: the request is in the bar at the top, and a checklist on the right shows each part with how to do it. Each part gets a ✓ when it is done.' })]),
+      ] : [h('p', { textContent: 'Here you make every change yourself with the mouse and keyboard. First a practice request, not timed: the request is in the bar at the top, and a checklist on the right shows each part with how to do it. Each part gets a ✓ when it is done.' })]),
       h('p', { textContent: 'Hover over anything in the app to see what it does in the Info box at the bottom left.' }),
     );
     // each "Practice again" is a different exercise, until they run out; every attempt is kept in block.practice
@@ -187,12 +202,12 @@ export async function startStudy({ daw, hooks }) {
       const items = steps.map(([what, how]) => h('li', {}, h('b', { textContent: what }), ai ? '' : h('p', { textContent: how })));
       if (ai) stepsEl.replaceChildren(
         h('h3', { textContent: 'Practice' }),
-        h('p', { innerHTML: '↑ Type the request in the box above and press Enter, or click 🎤, say it and click 🎤 again to send. Then check <b>Changes made</b>.' }),
+        h('p', { innerHTML: '↑ Click 🎤 above, say the request, and click 🎤 again to send it. Then check <b>Changes made</b>.' }),
         h('h3', { textContent: 'Parts of the request (✓ when right)' }), h('ol', {}, items),
         h('details', {}, h('summary', { textContent: 'Fix it yourself' }), h('ol', {}, steps.map(([what, how]) => h('li', {}, h('b', { textContent: what }), h('p', { textContent: how }))))));
       else stepsEl.replaceChildren(h('h3', { textContent: 'Practice checklist' }), h('ol', {}, items));
       stepsEl.hidden = false;
-      if (ai) { $('#typed').classList.add('pulse'); $('#typed').addEventListener('focus', () => $('#typed').classList.remove('pulse'), { once: true }); }
+      if (ai) $('#micBtn').classList.add('pulse');
       const tick = setInterval(() => {
         const s = daw.session();
         steps.forEach(([, , ok], i) => items[i].classList.toggle('done', ok(s)));
@@ -202,13 +217,13 @@ export async function startStudy({ daw, hooks }) {
       await new Promise(res => ($('#doneBtn').onclick = res));
       clearInterval(tick); $('#doneBtn').disabled = false;
       block.practice.push({ exercise: exercise + 1, ...finish() });
-      $('#typed').classList.remove('pulse');
+      $('#micBtn').classList.remove('pulse');
       save();
       again = await new Promise(res => show(
         h('h2', { textContent: 'Well done!' }),
         ...(more ? [h('p', { textContent: 'Would you like to practice again? You will get a different exercise, and it is not timed.' })] : []),
         h('p', { textContent: `Next come ${chosen.length} requests, timed. Each one asks for several changes at once. Work at your normal pace and aim to get every change exactly right. When you think a request is done, click Done (you can't go back).` }),
-        h('p', { textContent: ai ? 'Use the assistant for each request, and check its changes before clicking Done.' : 'The "How to…" tips stay on the right if you need them.' }),
+        h('p', { textContent: ai ? 'Say each request to the assistant, and check its changes before clicking Done.' : 'The "How to…" tips stay on the right if you need them.' }),
         h('div', { className: 'row' },
           ...(more ? [button('Practice again', () => { hide(); res(true); }, 'tbtn primary alt')] : []),
           button('Start the timed requests', () => { hide(); res(false); })),
@@ -241,7 +256,7 @@ export async function startStudy({ daw, hooks }) {
     // questions about this round
     stepsEl.hidden = true;
     block.survey = await form([
-      h('h2', { textContent: `Round ${round + 1}: a few questions` }),
+      h('h2', { textContent: single ? 'A few questions' : `Round ${round + 1}: a few questions` }),
       h('p', { className: 'small', textContent: `About the requests you just did ${ai ? 'with the AI assistant' : 'by hand'} (not the practice).` }),
       ...TLX.map(([k, title, text, l, r, alt]) => question(k, title, ...(ai && alt ? alt : [text, l, r]))),
       question('control', 'Control', 'I felt in control of what happened in the session.', ...LIKERT),
@@ -252,13 +267,13 @@ export async function startStudy({ daw, hooks }) {
         question('check_easy', 'Checking', 'Checking the assistant\'s results was easy.', ...LIKERT)] : []),
     ]);
     save();
-    if (round === 0) await screen(h('h2', { textContent: 'Round 1 done' }), h('p', { innerHTML: `Next, the same kind of requests ${order[1] === 'ai' ? '<b>with the AI assistant</b>' : '<b>by hand</b>, without the assistant'}.` }));
+    if (round === 0 && !single) await screen(h('h2', { textContent: 'Round 1 done' }), h('p', { innerHTML: `Next, the same kind of requests ${order[1] === 'ai' ? '<b>with the AI assistant</b>' : '<b>by hand</b>, without the assistant'}.` }));
   }
 
   // ---------- 3. final questions ----------
   rec.final = await form([
     h('h2', { textContent: 'Last questions' }),
-    question('prefer', 'Preference', 'Which way of working would you prefer for these requests? (4 = no preference)', 'Strongly prefer by hand', 'Strongly prefer the AI assistant'),
+    ...single ? [] : [question('prefer', 'Preference', 'Which way of working would you prefer for these requests? (4 = no preference)', 'Strongly prefer by hand', 'Strongly prefer the AI assistant')],
     choice('daw', '<b>Experience</b> Have you used music production software (a DAW, e.g. GarageBand, Ableton) before?', ['Never', 'A few times', 'Regularly']),
     h('label', { className: 'stack' }, 'Anything else you\'d like to tell us? (optional)', h('textarea', { name: 'comment', className: 'field', rows: 3 })),
   ]);
