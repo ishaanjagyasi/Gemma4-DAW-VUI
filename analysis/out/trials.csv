@@ -1,0 +1,25 @@
+participant,daw,first,condition,order,pair,trial,set,n_required,success,change_acc,extra_changes,time_s,seq,confidence,redo,verify_time,n_voice_requests,model_s,ai_only_success,ai_only_change_acc,error_types,transcripts
+P1,Regularly,noai,noai,1,P14,P14a,standard,13,1,1.0,0,51.2,2,6,,,0,0.0,1,1.0,,
+P1,Regularly,noai,noai,2,P09,P09a,hard,6,1,1.0,0,41.0,1,7,,,0,0.0,0,0.833,,
+P1,Regularly,noai,noai,3,P07,P07a,standard,13,1,1.0,0,46.9,1,7,,,0,0.0,1,1.0,,
+P1,Regularly,noai,ai,1,P14,P14b,standard,13,1,1.0,0,68.7,1,3,No,30 to 60 seconds,1,3.2,1,1.0,,at a compressor to kick drum and snare drum then set hi-hat volume to -16 DB then add Reverb to the snare drum finally Pan the symbols 30 left and Pan the guitar 30 right
+P1,Regularly,noai,ai,2,P09,P09b,hard,6,1,1.0,0,76.6,2,2,"Yes, I asked the assistant again",A few seconds,2,3.7,0,0.833,,set vocals volume to -4 decibels set the strings volume to -14 decibels set the backing vocals volume 6 DB below the new vocals volume delete track flute and mute the percussion || set the backing vocals to -10 DB
+P1,Regularly,noai,ai,3,P07,P07b,standard,13,1,1.0,0,31.9,1,4,No,I did not check,1,2.7,1,1.0,,Pan the piano 30 left pin the strings 30 right at a compressor to vocals at a compressor to base add Reverb to organ
+P2,Regularly,noai,noai,1,P15,P15a,hard,19,0,0.789,2,93.5,2,5,,,0,0.0,1,1.0,extra unrequested change; omitted edit; wrong track,
+P2,Regularly,noai,noai,2,P05,P05a,standard,14,1,1.0,0,58.7,1,7,,,0,0.0,1,1.0,,
+P2,Regularly,noai,noai,3,P04,P04b,standard,5,1,1.0,0,21.0,1,7,,,0,0.0,1,1.0,,
+P2,Regularly,noai,ai,1,P15,P15b,hard,18,0,0.833,0,76.8,4,5,"Yes, I fixed it by hand",30 to 60 seconds,1,11.8,1,1.0,wrong track,add Reverb to the delay track add compressor to the base of the drums set the tempo to 85 BPM add two new tracks and lead guitar and rhythm guitar and then add delay to the lead guitar track
+P2,Regularly,noai,ai,2,P05,P05b,standard,14,0,0.929,0,58.8,4,6,No,Under 30 seconds,1,15.5,1,1.0,wrong value,set the vocals volume to -4 the set the flute volume to -16 add Reverb to the vocals add three new tracks and trumpet trombone and saxophone and then pan trumpet 30 left and saxophone right
+P2,Regularly,noai,ai,3,P04,P04a,standard,5,1,1.0,0,65.5,4,6,"Yes, I asked the assistant again",Under 30 seconds,2,10.6,1,1.0,,set the BPM to 90 solo the drum and vase and then pan guitar 20 left and pan flute 20 right || solo the bass
+P3,Regularly,ai,noai,1,P04,P04b,standard,5,1,1.0,0,18.3,1,6,,,0,0.0,1,1.0,,
+P3,Regularly,ai,noai,2,P06,P06b,hard,17,0,0.0,0,2.7,1,1,,,0,0.0,0,0.941,omitted edit,
+P3,Regularly,ai,noai,3,P11,P11b,standard,14,1,1.0,0,30.5,2,7,,,0,0.0,1,1.0,,
+P3,Regularly,ai,ai,1,P06,P06a,hard,18,0,0.389,4,189.4,2,3,"Yes, I fixed it by hand",A few seconds,5,8.1,0,0.944,extra unrequested change; omitted edit; wrong value,let's add a compressor to the kick and snare drum let's do a high ratio || can you turn the hi-hat volume let's do like -60b below the snare drum || had some Reverb to the snare || let's compress the base let's do a somewhat low ratio and a slightly slow attack || and now it's warm the piano with Reverb like I want that shit drowning
+P3,Regularly,ai,ai,2,P11,P11a,standard,14,0,0.786,1,93.2,2,4,"Yes, I fixed it by hand",Under 30 seconds,1,2.3,1,1.0,extra unrequested change; omitted edit,let's delete the Oregon track meet the percussion track and add some compression to the drum and vocal that's one compressor for drums one compressor for vocals and then let's send the backing vocals to the Reverb return
+P3,Regularly,ai,ai,3,P04,P04a,standard,5,1,1.0,0,38.9,1,6,No,A few seconds,2,2.9,1,1.0,,hey we need to change the tempo of this project to 90 PPM || all right now it's solo just the drums and bass and Pan the guitar 20 left and the flute 20 right
+P4,Never,ai,noai,1,P20,P20b,standard,13,0,0.462,0,337.8,5,2,,,0,0.0,1,1.0,omitted edit; wrong track; wrong value,
+P4,Never,ai,noai,2,P24,P24b,hard,7,0,0.857,0,141.7,4,5,,,0,0.0,1,1.0,omitted edit,
+P4,Never,ai,noai,3,P04,P04a,standard,5,1,1.0,0,67.8,2,5,,,0,0.0,1,1.0,,
+P4,Never,ai,ai,1,P24,P24a,hard,7,0,1.0,1,163.7,4,3,"Yes, I fixed it by hand",Under 30 seconds,1,2.6,1,1.0,extra unrequested change,pen percussion 20 to the left 10 backing vocals 20 to the right set vocals volume to - 4 DB set a guitar volume to - 12 DB insert the Reverb audio effect directly on the Walkers track
+P4,Never,ai,ai,2,P20,P20a,standard,14,1,1.0,0,133.0,5,4,"Yes, I fixed it by hand",Under 30 seconds,1,4.5,1,1.0,,set the temple to 110 BPM turn on solo for both drums and the past insert the Reverb audio effect on the backing local track insert the compressed compressor on the vocals track insert the delay audio effect on the guitar track
+P4,Never,ai,ai,3,P04,P04b,standard,5,1,1.0,0,109.3,5,4,"Yes, I fixed it by hand",Under 30 seconds,1,2.3,1,1.0,,set the tempo to 125 BPM solar owning the drums and the bass tracks and strings 32 the left pan flute 30 to the right

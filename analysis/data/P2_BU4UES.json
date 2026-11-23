@@ -1,0 +1,3881 @@
+{
+ "pid": "BU4UES",
+ "name": "P2",
+ "mode": "continuous",
+ "order": [
+  "noai",
+  "ai"
+ ],
+ "started": "2026-11-19T20:10:49.744Z",
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+ "blocks": {
+  "noai": {
+   "round": 1,
+   "practice": [
+    {
+     "exercise": 1,
+     "ms": 60346,
+     "events": [
+      {
+       "t": 8897,
+       "type": "edit",
+       "data": {
+        "op": "volume",
+        "track": 3,
+        "id": "T3",
+        "value": -12,
+        "source": "drag",
+        "before": -6
+       }
+      },
+      {
+       "t": 14563,
+       "type": "edit",
+       "data": {
+        "op": "pan",
+        "track": 3,
+        "id": "T3",
+        "value": -20,
+        "source": "drag",
+        "before": 0
+       }
+      },
+      {
+       "t": 34180,
+       "type": "select",
+       "data": {
+        "tracks": [
+         4
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 35912,
+       "type": "track",
+       "data": {
+        "action": "insert",
+        "track": 5,
+        "id": "t29",
+        "source": "menu"
+       }
+      },
+      {
+       "t": 37179,
+       "type": "select",
+       "data": {
+        "tracks": [
+         5
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 41459,
+       "type": "edit",
+       "data": {
+        "op": "rename",
+        "track": 5,
+        "id": "t29",
+        "value": "Guitar",
+        "source": "type",
+        "before": {
+         "name": "5 Audio",
+         "color": "#00bfaf",
+         "vol": 0,
+         "pan": 0,
+         "on": true,
+         "solo": false,
+         "arm": false
+        }
+       }
+      },
+      {
+       "t": 44046,
+       "type": "select",
+       "data": {
+        "tracks": [
+         4
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 48814,
+       "type": "device",
+       "data": {
+        "action": "add",
+        "track": 4,
+        "device": "Reverb",
+        "source": "browser"
+       }
+      },
+      {
+       "t": 56362,
+       "type": "edit",
+       "data": {
+        "op": "mute",
+        "track": 2,
+        "id": "T2",
+        "value": true,
+        "source": "click",
+        "before": {
+         "name": "Bass",
+         "color": "#3fd1a2",
+         "vol": -10,
+         "pan": 0,
+         "on": true,
+         "solo": false,
+         "arm": false
+        }
+       }
+      }
+     ],
+     "ai": [],
+     "final": {
+      "tempo": 110,
+      "main": {
+       "vol": 0
+      },
+      "nextId": 1,
+      "tracks": [
+       {
+        "id": "T1",
+        "name": "Drums",
+        "color": "#ff8f3d",
+        "group": "other",
+        "vol": -8,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "pc0",
+          "name": "Drums",
+          "start": 0,
+          "len": 16,
+          "offset": 0,
+          "sound": "kick",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T2",
+        "name": "Bass",
+        "color": "#3fd1a2",
+        "group": "other",
+        "vol": -10,
+        "pan": 0,
+        "on": false,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "pc1",
+          "name": "Bass",
+          "start": 0,
+          "len": 16,
+          "offset": 0,
+          "sound": "bass",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T3",
+        "name": "Piano",
+        "color": "#47c1f0",
+        "group": "other",
+        "vol": -12,
+        "pan": -20,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "pc2",
+          "name": "Piano",
+          "start": 0,
+          "len": 16,
+          "offset": 0,
+          "sound": "keys",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T4",
+        "name": "Vocals",
+        "color": "#f27ac6",
+        "group": "other",
+        "vol": -9,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [
+         {
+          "id": "d30",
+          "type": "Reverb",
+          "on": true,
+          "params": {
+           "Decay": 2,
+           "Dry/Wet": 25
+          }
+         }
+        ],
+        "clips": [
+         {
+          "id": "pc3",
+          "name": "Vocals",
+          "start": 0,
+          "len": 16,
+          "offset": 0,
+          "sound": "lead",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "t29",
+        "name": "Guitar",
+        "color": "#00bfaf",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "clips": [],
+        "devices": []
+       }
+      ],
+      "returns": [
+       {
+        "id": "A",
+        "name": "A Reverb",
+        "color": "#92a7ff",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "pr",
+          "type": "Reverb",
+          "on": true,
+          "params": {
+           "Decay": 2.5,
+           "Dry/Wet": 100
+          }
+         }
+        ]
+       },
+       {
+        "id": "B",
+        "name": "B Delay",
+        "color": "#5cffe8",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "pd",
+          "type": "Delay",
+          "on": true,
+          "params": {
+           "Time": 375,
+           "Feedback": 35,
+           "Dry/Wet": 100
+          }
+         }
+        ]
+       }
+      ],
+      "metronome": false,
+      "transport": "stopped",
+      "marker": 0,
+      "loop": {
+       "on": false,
+       "start": 4,
+       "end": 12
+      },
+      "view": {
+       "selected": [
+        "Vocals"
+       ],
+       "range": null,
+       "playhead": null
+      }
+     }
+    }
+   ],
+   "trials": [
+    {
+     "order": 1,
+     "pair": "P15",
+     "id": "P15a",
+     "scenario": "effectsPass+recordingSetup",
+     "set": "hard",
+     "challenge": "described track",
+     "instruction": "1. Add Compressor to the track that has Delay\n2. Add Compressor to Bass and Vocals\n3. Set tempo to 110 BPM\n4. Add two new tracks named Lead Guitar and Rhythm Guitar\n5. Add Delay to Lead Guitar",
+     "n_calls": 7,
+     "success": false,
+     "tp": 15,
+     "n_required": 19,
+     "n_changed": 20,
+     "errors": [
+      {
+       "type": "omitted edit",
+       "key": "t:T1.fx"
+      },
+      {
+       "type": "wrong track",
+       "key": "t:T1.fx.Compressor#1.Thresh",
+       "got": "r:B.fx.Compressor#1.Thresh"
+      },
+      {
+       "type": "wrong track",
+       "key": "t:T1.fx.Compressor#1.Ratio",
+       "got": "r:B.fx.Compressor#1.Ratio"
+      },
+      {
+       "type": "wrong track",
+       "key": "t:T1.fx.Compressor#1.Attack",
+       "got": "r:B.fx.Compressor#1.Attack"
+      },
+      {
+       "type": "extra unrequested change",
+       "key": "t:T1.vol",
+       "got": -12
+      },
+      {
+       "type": "extra unrequested change",
+       "key": "r:B.fx",
+       "got": "Delay > Compressor"
+      }
+     ],
+     "ms": 93473,
+     "events": [
+      {
+       "t": 5398,
+       "type": "edit",
+       "data": {
+        "op": "volume",
+        "track": 1,
+        "id": "T1",
+        "value": -12,
+        "source": "type",
+        "before": -10
+       }
+      },
+      {
+       "t": 13487,
+       "type": "select",
+       "data": {
+        "ret": "B"
+       }
+      },
+      {
+       "t": 15255,
+       "type": "device",
+       "data": {
+        "action": "add",
+        "track": "Return B",
+        "device": "Compressor",
+        "source": "browser"
+       }
+      },
+      {
+       "t": 22303,
+       "type": "select",
+       "data": {
+        "tracks": [
+         6
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 22870,
+       "type": "select",
+       "data": {
+        "tracks": [
+         5
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 24554,
+       "type": "select",
+       "data": {
+        "tracks": [
+         4
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 25071,
+       "type": "select",
+       "data": {
+        "tracks": [
+         3
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 25554,
+       "type": "select",
+       "data": {
+        "tracks": [
+         2
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 26120,
+       "type": "select",
+       "data": {
+        "tracks": [
+         1
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 27688,
+       "type": "device",
+       "data": {
+        "action": "add",
+        "track": 1,
+        "device": "Compressor",
+        "source": "browser"
+       }
+      },
+      {
+       "t": 32587,
+       "type": "select",
+       "data": {
+        "tracks": [
+         3
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 32754,
+       "type": "select",
+       "data": {
+        "tracks": [
+         3
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 34353,
+       "type": "select",
+       "data": {
+        "tracks": [
+         6
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 35221,
+       "type": "select",
+       "data": {
+        "tracks": [
+         3
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 36888,
+       "type": "device",
+       "data": {
+        "action": "add",
+        "track": 3,
+        "device": "Compressor",
+        "source": "browser"
+       }
+      },
+      {
+       "t": 39354,
+       "type": "select",
+       "data": {
+        "tracks": [
+         6
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 39521,
+       "type": "select",
+       "data": {
+        "tracks": [
+         6
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 40987,
+       "type": "device",
+       "data": {
+        "action": "add",
+        "track": 6,
+        "device": "Saturator",
+        "source": "browser"
+       }
+      },
+      {
+       "t": 42322,
+       "type": "device",
+       "data": {
+        "action": "add",
+        "track": 6,
+        "device": "Saturator",
+        "source": "browser"
+       }
+      },
+      {
+       "t": 43288,
+       "type": "device",
+       "data": {
+        "action": "add",
+        "track": 6,
+        "device": "Compressor",
+        "source": "browser"
+       }
+      },
+      {
+       "t": 44698,
+       "type": "device",
+       "data": {
+        "action": "delete",
+        "track": 6,
+        "device": "Saturator",
+        "source": "shortcut"
+       }
+      },
+      {
+       "t": 44702,
+       "type": "shortcut",
+       "data": {
+        "key": "Backspace",
+        "selected": [
+         6
+        ]
+       }
+      },
+      {
+       "t": 45704,
+       "type": "device",
+       "data": {
+        "action": "delete",
+        "track": 6,
+        "device": "Saturator",
+        "source": "shortcut"
+       }
+      },
+      {
+       "t": 45708,
+       "type": "shortcut",
+       "data": {
+        "key": "Backspace",
+        "selected": [
+         6
+        ]
+       }
+      },
+      {
+       "t": 51389,
+       "type": "edit",
+       "data": {
+        "op": "tempo",
+        "track": 0,
+        "value": 110,
+        "source": "type",
+        "before": 136
+       }
+      },
+      {
+       "t": 56354,
+       "type": "track",
+       "data": {
+        "action": "insert",
+        "track": 7,
+        "id": "t37",
+        "source": "menu"
+       }
+      },
+      {
+       "t": 57738,
+       "type": "select",
+       "data": {
+        "tracks": [
+         7
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 57904,
+       "type": "select",
+       "data": {
+        "tracks": [
+         7
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 64164,
+       "type": "edit",
+       "data": {
+        "op": "rename",
+        "track": 7,
+        "id": "t37",
+        "value": "Lead Guitar",
+        "source": "type",
+        "before": {
+         "name": "7 Audio",
+         "color": "#92a7ff",
+         "vol": 0,
+         "pan": 0,
+         "on": true,
+         "solo": false,
+         "arm": false
+        }
+       }
+      },
+      {
+       "t": 67204,
+       "type": "track",
+       "data": {
+        "action": "insert",
+        "track": 8,
+        "id": "t38",
+        "source": "menu"
+       }
+      },
+      {
+       "t": 68220,
+       "type": "select",
+       "data": {
+        "tracks": [
+         8
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 73814,
+       "type": "edit",
+       "data": {
+        "op": "rename",
+        "track": 8,
+        "id": "t38",
+        "value": "Rhythm Guitar",
+        "source": "type",
+        "before": {
+         "name": "8 Audio",
+         "color": "#99724b",
+         "vol": 0,
+         "pan": 0,
+         "on": true,
+         "solo": false,
+         "arm": false
+        }
+       }
+      },
+      {
+       "t": 74854,
+       "type": "select",
+       "data": {
+        "tracks": [
+         7
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 78038,
+       "type": "select",
+       "data": {
+        "tracks": [
+         1
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 80565,
+       "type": "device",
+       "data": {
+        "action": "delete",
+        "track": 1,
+        "device": "Compressor",
+        "source": "shortcut"
+       }
+      },
+      {
+       "t": 80568,
+       "type": "shortcut",
+       "data": {
+        "key": "Backspace",
+        "selected": [
+         1
+        ]
+       }
+      },
+      {
+       "t": 81737,
+       "type": "select",
+       "data": {
+        "tracks": [
+         8
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 88404,
+       "type": "select",
+       "data": {
+        "tracks": [
+         7
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 90122,
+       "type": "device",
+       "data": {
+        "action": "add",
+        "track": 7,
+        "device": "Delay",
+        "source": "browser"
+       }
+      }
+     ],
+     "ai": [],
+     "final": {
+      "tempo": 110,
+      "main": {
+       "vol": 0
+      },
+      "tracks": [
+       {
+        "id": "T1",
+        "name": "Drums",
+        "color": "#ff8f3d",
+        "group": "drums",
+        "vol": -12,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [
+         {
+          "id": "hdT1",
+          "type": "Delay",
+          "on": true,
+          "params": {
+           "Time": 375,
+           "Feedback": 35,
+           "Dry/Wet": 25
+          }
+         }
+        ],
+        "clips": [
+         {
+          "id": "gc1",
+          "name": "Drums",
+          "start": 0,
+          "len": 8,
+          "offset": 0,
+          "sound": "kick",
+          "on": true
+         },
+         {
+          "id": "gc2",
+          "name": "Drums",
+          "start": 12,
+          "len": 12,
+          "offset": 12,
+          "sound": "kick",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T2",
+        "name": "Percussion",
+        "color": "#9bd96b",
+        "group": "bass",
+        "vol": -2,
+        "pan": 15,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc3",
+          "name": "Percussion",
+          "start": 4,
+          "len": 20,
+          "offset": 4,
+          "sound": "shaker",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T3",
+        "name": "Bass",
+        "color": "#3fd1a2",
+        "group": "music",
+        "vol": -4,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [
+         {
+          "id": "d33",
+          "type": "Compressor",
+          "on": true,
+          "params": {
+           "Thresh": -18,
+           "Ratio": 4,
+           "Attack": 10
+          }
+         }
+        ],
+        "clips": [
+         {
+          "id": "gc4",
+          "name": "Bass",
+          "start": 8,
+          "len": 16,
+          "offset": 8,
+          "sound": "bass",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T4",
+        "name": "Guitar",
+        "color": "#7f9cf5",
+        "group": "music",
+        "vol": -4,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -19,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc6",
+          "name": "Guitar",
+          "start": 0,
+          "len": 8,
+          "offset": 0,
+          "sound": "arp",
+          "on": true
+         },
+         {
+          "id": "gc7",
+          "name": "Guitar",
+          "start": 12,
+          "len": 12,
+          "offset": 12,
+          "sound": "arp",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T5",
+        "name": "Strings",
+        "color": "#a08cf0",
+        "group": "vocals",
+        "vol": -16,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -13,
+         "B": -70
+        },
+        "devices": [
+         {
+          "id": "gd8",
+          "type": "Reverb",
+          "on": true,
+          "params": {
+           "Decay": 3,
+           "Dry/Wet": 25
+          }
+         },
+         {
+          "id": "gd9",
+          "type": "Compressor",
+          "on": true,
+          "params": {
+           "Thresh": -18,
+           "Ratio": 2,
+           "Attack": 10
+          }
+         }
+        ],
+        "clips": [
+         {
+          "id": "gc10",
+          "name": "Strings",
+          "start": 0,
+          "len": 24,
+          "offset": 0,
+          "sound": "pad",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T6",
+        "name": "Vocals",
+        "color": "#f27ac6",
+        "group": "drums",
+        "vol": -10,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [
+         {
+          "id": "d36",
+          "type": "Compressor",
+          "on": true,
+          "params": {
+           "Thresh": -18,
+           "Ratio": 4,
+           "Attack": 10
+          }
+         }
+        ],
+        "clips": [
+         {
+          "id": "gc1",
+          "name": "Vocals",
+          "start": 0,
+          "len": 8,
+          "offset": 0,
+          "sound": "lead",
+          "on": true
+         },
+         {
+          "id": "gc2",
+          "name": "Vocals",
+          "start": 12,
+          "len": 12,
+          "offset": 12,
+          "sound": "lead",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "t37",
+        "name": "Lead Guitar",
+        "color": "#92a7ff",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "clips": [],
+        "devices": [
+         {
+          "id": "d39",
+          "type": "Delay",
+          "on": true,
+          "params": {
+           "Time": 375,
+           "Feedback": 35,
+           "Dry/Wet": 25
+          }
+         }
+        ]
+       },
+       {
+        "id": "t38",
+        "name": "Rhythm Guitar",
+        "color": "#99724b",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "clips": [],
+        "devices": []
+       }
+      ],
+      "returns": [
+       {
+        "id": "A",
+        "name": "A Reverb",
+        "color": "#92a7ff",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "gd11",
+          "type": "Reverb",
+          "on": true,
+          "params": {
+           "Decay": 2.5,
+           "Dry/Wet": 100
+          }
+         }
+        ]
+       },
+       {
+        "id": "B",
+        "name": "B Delay",
+        "color": "#5cffe8",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "gd12",
+          "type": "Delay",
+          "on": true,
+          "params": {
+           "Time": 375,
+           "Feedback": 35,
+           "Dry/Wet": 100
+          }
+         },
+         {
+          "id": "d31",
+          "type": "Compressor",
+          "on": true,
+          "params": {
+           "Thresh": -18,
+           "Ratio": 4,
+           "Attack": 10
+          }
+         }
+        ]
+       }
+      ],
+      "nextId": 1,
+      "metronome": false,
+      "transport": "stopped",
+      "marker": 0,
+      "loop": {
+       "on": false,
+       "start": 4,
+       "end": 12
+      },
+      "view": {
+       "selected": [
+        "Lead Guitar"
+       ],
+       "range": null,
+       "playhead": null
+      }
+     },
+     "rating": {
+      "seq": "2",
+      "confidence": "5"
+     }
+    },
+    {
+     "order": 2,
+     "pair": "P05",
+     "id": "P05a",
+     "scenario": "vocalBalance+recordingSetup",
+     "set": "standard",
+     "challenge": "",
+     "instruction": "1. Set Vocals volume to -6 dB\n2. Set Strings volume to -12 dB\n3. Add Reverb to Vocals\n4. Add three new tracks named Violin 1, Violin 2 and Viola\n5. Pan Violin 1 30 left and Viola 30 right",
+     "n_calls": 8,
+     "success": true,
+     "tp": 14,
+     "n_required": 14,
+     "n_changed": 14,
+     "errors": [],
+     "ms": 58712,
+     "events": [
+      {
+       "t": 6706,
+       "type": "edit",
+       "data": {
+        "op": "volume",
+        "track": 4,
+        "id": "T4",
+        "value": -6,
+        "source": "type",
+        "before": -15
+       }
+      },
+      {
+       "t": 10472,
+       "type": "edit",
+       "data": {
+        "op": "volume",
+        "track": 3,
+        "id": "T3",
+        "value": -12,
+        "source": "type",
+        "before": -8
+       }
+      },
+      {
+       "t": 12011,
+       "type": "select",
+       "data": {
+        "ret": "A"
+       }
+      },
+      {
+       "t": 12895,
+       "type": "select",
+       "data": {
+        "tracks": [
+         4
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 15312,
+       "type": "device",
+       "data": {
+        "action": "add",
+        "track": 4,
+        "device": "Reverb",
+        "source": "browser"
+       }
+      },
+      {
+       "t": 18963,
+       "type": "select",
+       "data": {
+        "tracks": [
+         5
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 20594,
+       "type": "track",
+       "data": {
+        "action": "insert",
+        "track": 6,
+        "id": "t41",
+        "source": "menu"
+       }
+      },
+      {
+       "t": 22130,
+       "type": "shortcut",
+       "data": {
+        "key": "Cmd+r",
+        "selected": [
+         6
+        ]
+       }
+      },
+      {
+       "t": 25208,
+       "type": "edit",
+       "data": {
+        "op": "rename",
+        "track": 6,
+        "id": "t41",
+        "value": "Violin 1",
+        "source": "type",
+        "before": {
+         "name": "6 Audio",
+         "color": "#5480e4",
+         "vol": 0,
+         "pan": 0,
+         "on": true,
+         "solo": false,
+         "arm": false
+        }
+       }
+      },
+      {
+       "t": 25981,
+       "type": "shortcut",
+       "data": {
+        "key": "Cmd+r",
+        "selected": [
+         6
+        ]
+       }
+      },
+      {
+       "t": 27330,
+       "type": "track",
+       "data": {
+        "action": "duplicate",
+        "tracks": [
+         6
+        ],
+        "source": "shortcut"
+       }
+      },
+      {
+       "t": 27333,
+       "type": "shortcut",
+       "data": {
+        "key": "Cmd+d",
+        "selected": [
+         7
+        ]
+       }
+      },
+      {
+       "t": 27805,
+       "type": "track",
+       "data": {
+        "action": "duplicate",
+        "tracks": [
+         7
+        ],
+        "source": "shortcut"
+       }
+      },
+      {
+       "t": 27808,
+       "type": "shortcut",
+       "data": {
+        "key": "Cmd+d",
+        "selected": [
+         8
+        ]
+       }
+      },
+      {
+       "t": 29027,
+       "type": "shortcut",
+       "data": {
+        "key": "Cmd+r",
+        "selected": [
+         8
+        ]
+       }
+      },
+      {
+       "t": 31304,
+       "type": "edit",
+       "data": {
+        "op": "rename",
+        "track": 8,
+        "id": "t43",
+        "value": "Violin 3",
+        "source": "type",
+        "before": {
+         "name": "Violin 1",
+         "color": "#5480e4",
+         "vol": 0,
+         "pan": 0,
+         "on": true,
+         "solo": false,
+         "arm": false
+        }
+       }
+      },
+      {
+       "t": 32562,
+       "type": "select",
+       "data": {
+        "tracks": [
+         7
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 33081,
+       "type": "shortcut",
+       "data": {
+        "key": "Cmd+r",
+        "selected": [
+         7
+        ]
+       }
+      },
+      {
+       "t": 34457,
+       "type": "edit",
+       "data": {
+        "op": "rename",
+        "track": 7,
+        "id": "t42",
+        "value": "Violin 2",
+        "source": "type",
+        "before": {
+         "name": "Violin 1",
+         "color": "#5480e4",
+         "vol": 0,
+         "pan": 0,
+         "on": true,
+         "solo": false,
+         "arm": false
+        }
+       }
+      },
+      {
+       "t": 36628,
+       "type": "select",
+       "data": {
+        "tracks": [
+         8
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 37793,
+       "type": "shortcut",
+       "data": {
+        "key": "Cmd+r",
+        "selected": [
+         8
+        ]
+       }
+      },
+      {
+       "t": 39826,
+       "type": "edit",
+       "data": {
+        "op": "rename",
+        "track": 8,
+        "id": "t43",
+        "value": "Viola",
+        "source": "type",
+        "before": {
+         "name": "Violin 3",
+         "color": "#5480e4",
+         "vol": 0,
+         "pan": 0,
+         "on": true,
+         "solo": false,
+         "arm": false
+        }
+       }
+      },
+      {
+       "t": 46594,
+       "type": "edit",
+       "data": {
+        "op": "pan",
+        "track": 6,
+        "id": "t41",
+        "value": -25,
+        "source": "drag",
+        "before": 0
+       }
+      },
+      {
+       "t": 48256,
+       "type": "edit",
+       "data": {
+        "op": "pan",
+        "track": 6,
+        "id": "t41",
+        "value": 30,
+        "source": "type",
+        "before": -25
+       }
+      },
+      {
+       "t": 50119,
+       "type": "shortcut",
+       "data": {
+        "key": "=",
+        "selected": [
+         8
+        ]
+       }
+      },
+      {
+       "t": 52696,
+       "type": "edit",
+       "data": {
+        "op": "pan",
+        "track": 6,
+        "id": "t41",
+        "value": -30,
+        "source": "type",
+        "before": 30
+       }
+      },
+      {
+       "t": 55813,
+       "type": "edit",
+       "data": {
+        "op": "pan",
+        "track": 8,
+        "id": "t43",
+        "value": 30,
+        "source": "type",
+        "before": 0
+       }
+      }
+     ],
+     "ai": [],
+     "final": {
+      "tempo": 101,
+      "main": {
+       "vol": -3
+      },
+      "tracks": [
+       {
+        "id": "T1",
+        "name": "Drums",
+        "color": "#ff8f3d",
+        "group": "drums",
+        "vol": -4,
+        "pan": 35,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -15,
+         "B": -70
+        },
+        "devices": [
+         {
+          "id": "gd1",
+          "type": "Compressor",
+          "on": true,
+          "params": {
+           "Thresh": -31,
+           "Ratio": 4,
+           "Attack": 10
+          }
+         }
+        ],
+        "clips": [
+         {
+          "id": "gc2",
+          "name": "Drums",
+          "start": 8,
+          "len": 16,
+          "offset": 8,
+          "sound": "kick",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T2",
+        "name": "Piano",
+        "color": "#47c1f0",
+        "group": "drums",
+        "vol": -6,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -13,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc3",
+          "name": "Piano",
+          "start": 0,
+          "len": 8,
+          "offset": 0,
+          "sound": "keys",
+          "on": true
+         },
+         {
+          "id": "gc4",
+          "name": "Piano",
+          "start": 12,
+          "len": 12,
+          "offset": 12,
+          "sound": "keys",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T3",
+        "name": "Strings",
+        "color": "#a08cf0",
+        "group": "drums",
+        "vol": -12,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc6",
+          "name": "Strings",
+          "start": 0,
+          "len": 24,
+          "offset": 0,
+          "sound": "pad",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T4",
+        "name": "Vocals",
+        "color": "#f27ac6",
+        "group": "music",
+        "vol": -6,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -11,
+         "B": -70
+        },
+        "devices": [
+         {
+          "id": "d40",
+          "type": "Reverb",
+          "on": true,
+          "params": {
+           "Decay": 2,
+           "Dry/Wet": 25
+          }
+         }
+        ],
+        "clips": [
+         {
+          "id": "gc7",
+          "name": "Vocals",
+          "start": 0,
+          "len": 8,
+          "offset": 0,
+          "sound": "lead",
+          "on": true
+         },
+         {
+          "id": "gc8",
+          "name": "Vocals",
+          "start": 12,
+          "len": 12,
+          "offset": 12,
+          "sound": "lead",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T5",
+        "name": "Backing Vocals",
+        "color": "#d6a6f2",
+        "group": "music",
+        "vol": -17,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc9",
+          "name": "Backing Vocals",
+          "start": 4,
+          "len": 20,
+          "offset": 4,
+          "sound": "choir",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "t41",
+        "name": "Violin 1",
+        "color": "#5480e4",
+        "vol": 0,
+        "pan": -30,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "clips": [],
+        "devices": []
+       },
+       {
+        "id": "t42",
+        "name": "Violin 2",
+        "color": "#5480e4",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "clips": [],
+        "devices": []
+       },
+       {
+        "id": "t43",
+        "name": "Viola",
+        "color": "#5480e4",
+        "vol": 0,
+        "pan": 30,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "clips": [],
+        "devices": []
+       }
+      ],
+      "returns": [
+       {
+        "id": "A",
+        "name": "A Reverb",
+        "color": "#92a7ff",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "gd13",
+          "type": "Reverb",
+          "on": true,
+          "params": {
+           "Decay": 2.5,
+           "Dry/Wet": 100
+          }
+         }
+        ]
+       },
+       {
+        "id": "B",
+        "name": "B Delay",
+        "color": "#5cffe8",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "gd14",
+          "type": "Delay",
+          "on": true,
+          "params": {
+           "Time": 375,
+           "Feedback": 35,
+           "Dry/Wet": 100
+          }
+         }
+        ]
+       }
+      ],
+      "nextId": 1,
+      "metronome": false,
+      "transport": "stopped",
+      "marker": 0,
+      "loop": {
+       "on": false,
+       "start": 16,
+       "end": 20
+      },
+      "view": {
+       "selected": [
+        "Viola"
+       ],
+       "range": null,
+       "playhead": null
+      }
+     },
+     "rating": {
+      "seq": "1",
+      "confidence": "7"
+     }
+    },
+    {
+     "order": 3,
+     "pair": "P04",
+     "id": "P04b",
+     "scenario": "grooveCheck+stereoSpread",
+     "set": "standard",
+     "challenge": "",
+     "instruction": "1. Set tempo to 125 BPM\n2. Solo Drums and Bass\n3. Pan Strings 30 left\n4. Pan Flute 30 right",
+     "n_calls": 5,
+     "success": true,
+     "tp": 5,
+     "n_required": 5,
+     "n_changed": 5,
+     "errors": [],
+     "ms": 21014,
+     "events": [
+      {
+       "t": 2596,
+       "type": "edit",
+       "data": {
+        "op": "tempo",
+        "track": 0,
+        "value": 131.93,
+        "source": "drag",
+        "before": 132
+       }
+      },
+      {
+       "t": 4174,
+       "type": "edit",
+       "data": {
+        "op": "tempo",
+        "track": 0,
+        "value": 125,
+        "source": "type",
+        "before": 131.93
+       }
+      },
+      {
+       "t": 6480,
+       "type": "edit",
+       "data": {
+        "op": "solo",
+        "track": 1,
+        "id": "T1",
+        "value": true,
+        "source": "click",
+        "before": {
+         "name": "Drums",
+         "color": "#ff8f3d",
+         "vol": -14,
+         "pan": 15,
+         "on": true,
+         "solo": false,
+         "arm": false
+        }
+       }
+      },
+      {
+       "t": 7230,
+       "type": "edit",
+       "data": {
+        "op": "solo",
+        "track": 2,
+        "id": "T2",
+        "value": true,
+        "source": "click",
+        "before": {
+         "name": "Bass",
+         "color": "#3fd1a2",
+         "vol": -6,
+         "pan": 0,
+         "on": true,
+         "solo": false,
+         "arm": false
+        }
+       }
+      },
+      {
+       "t": 11947,
+       "type": "select",
+       "data": {
+        "tracks": [
+         3
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 14707,
+       "type": "edit",
+       "data": {
+        "op": "pan",
+        "track": 3,
+        "id": "T3",
+        "value": -30,
+        "source": "type",
+        "before": 0
+       }
+      },
+      {
+       "t": 17031,
+       "type": "edit",
+       "data": {
+        "op": "pan",
+        "track": 4,
+        "id": "T4",
+        "value": 30,
+        "source": "type",
+        "before": 0
+       }
+      }
+     ],
+     "ai": [],
+     "final": {
+      "tempo": 125,
+      "main": {
+       "vol": 0
+      },
+      "tracks": [
+       {
+        "id": "T1",
+        "name": "Drums",
+        "color": "#ff8f3d",
+        "group": "drums",
+        "vol": -14,
+        "pan": 15,
+        "on": true,
+        "solo": true,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc1",
+          "name": "Drums",
+          "start": 4,
+          "len": 8,
+          "offset": 4,
+          "sound": "kick",
+          "on": true
+         },
+         {
+          "id": "gc2",
+          "name": "Drums",
+          "start": 16,
+          "len": 8,
+          "offset": 16,
+          "sound": "kick",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T2",
+        "name": "Bass",
+        "color": "#3fd1a2",
+        "group": "bass",
+        "vol": -6,
+        "pan": 0,
+        "on": true,
+        "solo": true,
+        "arm": false,
+        "sends": {
+         "A": -17,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc3",
+          "name": "Bass",
+          "start": 0,
+          "len": 12,
+          "offset": 0,
+          "sound": "bass",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T3",
+        "name": "Strings",
+        "color": "#a08cf0",
+        "group": "music",
+        "vol": -7,
+        "pan": -30,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -19
+        },
+        "devices": [
+         {
+          "id": "gd4",
+          "type": "Delay",
+          "on": true,
+          "params": {
+           "Time": 500,
+           "Feedback": 60,
+           "Dry/Wet": 25
+          }
+         }
+        ],
+        "clips": [
+         {
+          "id": "gc6",
+          "name": "Strings",
+          "start": 8,
+          "len": 16,
+          "offset": 8,
+          "sound": "pad",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T4",
+        "name": "Flute",
+        "color": "#f59ad0",
+        "group": "music",
+        "vol": -3,
+        "pan": 30,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -24,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc7",
+          "name": "Flute",
+          "start": 4,
+          "len": 8,
+          "offset": 4,
+          "sound": "lead",
+          "on": true
+         },
+         {
+          "id": "gc8",
+          "name": "Flute",
+          "start": 16,
+          "len": 8,
+          "offset": 16,
+          "sound": "lead",
+          "on": true
+         }
+        ]
+       }
+      ],
+      "returns": [
+       {
+        "id": "A",
+        "name": "A Reverb",
+        "color": "#92a7ff",
+        "vol": -7,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "gd21",
+          "type": "Reverb",
+          "on": true,
+          "params": {
+           "Decay": 2.5,
+           "Dry/Wet": 100
+          }
+         }
+        ]
+       },
+       {
+        "id": "B",
+        "name": "B Delay",
+        "color": "#5cffe8",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "gd22",
+          "type": "Delay",
+          "on": true,
+          "params": {
+           "Time": 375,
+           "Feedback": 35,
+           "Dry/Wet": 100
+          }
+         }
+        ]
+       }
+      ],
+      "nextId": 1,
+      "metronome": false,
+      "transport": "stopped",
+      "marker": 0,
+      "loop": {
+       "on": false,
+       "start": 4,
+       "end": 12
+      },
+      "view": {
+       "selected": [
+        "Strings"
+       ],
+       "range": null,
+       "playhead": null
+      }
+     },
+     "rating": {
+      "seq": "1",
+      "confidence": "7"
+     }
+    }
+   ],
+   "survey": {
+    "mental": "2",
+    "physical": "3",
+    "temporal": "3",
+    "performance": "6",
+    "effort": "2",
+    "frustration": "2",
+    "control": "7",
+    "umux_capabilities": "6",
+    "umux_easy": "6"
+   }
+  },
+  "ai": {
+   "round": 2,
+   "practice": [
+    {
+     "exercise": 1,
+     "ms": 70265,
+     "events": [
+      {
+       "t": 51550,
+       "type": "assistant",
+       "data": {
+        "source": "assistant",
+        "calls": [
+         {
+          "name": "set_pan",
+          "arguments": {
+           "pan": -20,
+           "track": "Piano"
+          }
+         },
+         {
+          "name": "set_volume",
+          "arguments": {
+           "db": -12,
+           "track": "Piano"
+          }
+         },
+         {
+          "name": "insert_track",
+          "arguments": {
+           "name": "Guitar"
+          }
+         },
+         {
+          "name": "add_effect",
+          "arguments": {
+           "effect": "Reverb",
+           "track": "Vocals"
+          }
+         },
+         {
+          "name": "set_mute",
+          "arguments": {
+           "muted": true,
+           "track": "Bass"
+          }
+         }
+        ],
+        "errors": [],
+        "changes": [
+         "Bass: muted",
+         "Piano: volume: -6.0 dB \u2192 -12.0 dB",
+         "Piano: pan: C \u2192 20L",
+         "Vocals: effects: none \u2192 Reverb",
+         "Added track \"Guitar\""
+        ]
+       }
+      },
+      {
+       "t": 61665,
+       "type": "select",
+       "data": {
+        "tracks": [
+         4
+        ],
+        "mod": ""
+       }
+      }
+     ],
+     "ai": [
+      {
+       "t": 8849,
+       "type": "mic",
+       "action": "start"
+      },
+      {
+       "t": 51553,
+       "type": "request",
+       "text": "pan piano 20 left set piano volume to -12 DB add a new track named guitar add Reverb to vocals and mute base",
+       "via": "voice",
+       "ms": 23000,
+       "modelMs": 19952,
+       "calls": [
+        {
+         "name": "set_pan",
+         "arguments": {
+          "pan": -20,
+          "track": "Piano"
+         }
+        },
+        {
+         "name": "set_volume",
+         "arguments": {
+          "db": -12,
+          "track": "Piano"
+         }
+        },
+        {
+         "name": "insert_track",
+         "arguments": {
+          "name": "Guitar"
+         }
+        },
+        {
+         "name": "add_effect",
+         "arguments": {
+          "effect": "Reverb",
+          "track": "Vocals"
+         }
+        },
+        {
+         "name": "set_mute",
+         "arguments": {
+          "muted": true,
+          "track": "Bass"
+         }
+        }
+       ],
+       "changes": [
+        "Bass: muted",
+        "Piano: volume: -6.0 dB \u2192 -12.0 dB",
+        "Piano: pan: C \u2192 20L",
+        "Vocals: effects: none \u2192 Reverb",
+        "Added track \"Guitar\""
+       ],
+       "errors": [],
+       "content": "",
+       "parseError": false
+      }
+     ],
+     "final": {
+      "tempo": 110,
+      "main": {
+       "vol": 0
+      },
+      "nextId": 3,
+      "tracks": [
+       {
+        "id": "T1",
+        "name": "Drums",
+        "color": "#ff8f3d",
+        "group": "other",
+        "vol": -8,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "pc0",
+          "name": "Drums",
+          "start": 0,
+          "len": 16,
+          "offset": 0,
+          "sound": "kick",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T2",
+        "name": "Bass",
+        "color": "#3fd1a2",
+        "group": "other",
+        "vol": -10,
+        "pan": 0,
+        "on": false,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "pc1",
+          "name": "Bass",
+          "start": 0,
+          "len": 16,
+          "offset": 0,
+          "sound": "bass",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T3",
+        "name": "Piano",
+        "color": "#47c1f0",
+        "group": "other",
+        "vol": -12,
+        "pan": -20,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "pc2",
+          "name": "Piano",
+          "start": 0,
+          "len": 16,
+          "offset": 0,
+          "sound": "keys",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T4",
+        "name": "Vocals",
+        "color": "#f27ac6",
+        "group": "other",
+        "vol": -9,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [
+         {
+          "id": "D3",
+          "type": "Reverb",
+          "on": true,
+          "params": {
+           "Decay": 2,
+           "Dry/Wet": 25
+          }
+         }
+        ],
+        "clips": [
+         {
+          "id": "pc3",
+          "name": "Vocals",
+          "start": 0,
+          "len": 16,
+          "offset": 0,
+          "sound": "lead",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "N2",
+        "name": "Guitar",
+        "color": "#f7f47c",
+        "group": "other",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": []
+       }
+      ],
+      "returns": [
+       {
+        "id": "A",
+        "name": "A Reverb",
+        "color": "#92a7ff",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "pr",
+          "type": "Reverb",
+          "on": true,
+          "params": {
+           "Decay": 2.5,
+           "Dry/Wet": 100
+          }
+         }
+        ]
+       },
+       {
+        "id": "B",
+        "name": "B Delay",
+        "color": "#5cffe8",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "pd",
+          "type": "Delay",
+          "on": true,
+          "params": {
+           "Time": 375,
+           "Feedback": 35,
+           "Dry/Wet": 100
+          }
+         }
+        ]
+       }
+      ],
+      "metronome": false,
+      "transport": "stopped",
+      "marker": 0,
+      "loop": {
+       "on": false,
+       "start": 4,
+       "end": 12
+      },
+      "view": {
+       "selected": [
+        "Vocals"
+       ],
+       "range": null,
+       "playhead": null
+      }
+     }
+    }
+   ],
+   "trials": [
+    {
+     "order": 1,
+     "pair": "P15",
+     "id": "P15b",
+     "scenario": "effectsPass+recordingSetup",
+     "set": "hard",
+     "challenge": "described track",
+     "instruction": "1. Add Reverb to the track that has Delay\n2. Add Compressor to Bass and Drums\n3. Set tempo to 85 BPM\n4. Add two new tracks named Lead Guitar and Rhythm Guitar\n5. Add Delay to Lead Guitar",
+     "n_calls": 7,
+     "success": false,
+     "tp": 15,
+     "n_required": 18,
+     "n_changed": 18,
+     "errors": [
+      {
+       "type": "wrong track",
+       "key": "t:T5.fx",
+       "got": "r:B.fx"
+      },
+      {
+       "type": "wrong track",
+       "key": "t:T5.fx.Reverb#1.Decay",
+       "got": "r:B.fx.Reverb#1.Decay"
+      },
+      {
+       "type": "wrong track",
+       "key": "t:T5.fx.Reverb#1.Dry/Wet",
+       "got": "r:B.fx.Reverb#1.Dry/Wet"
+      }
+     ],
+     "ms": 76847,
+     "events": [
+      {
+       "t": 38264,
+       "type": "assistant",
+       "data": {
+        "source": "assistant",
+        "calls": [
+         {
+          "name": "add_effect",
+          "arguments": {
+           "effect": "Reverb",
+           "track": "B Delay"
+          }
+         },
+         {
+          "name": "add_effect",
+          "arguments": {
+           "effect": "Compressor",
+           "track": "Drums"
+          }
+         },
+         {
+          "name": "set_tempo",
+          "arguments": {
+           "bpm": 85
+          }
+         },
+         {
+          "name": "insert_track",
+          "arguments": {
+           "name": "Lead Guitar"
+          }
+         },
+         {
+          "name": "insert_track",
+          "arguments": {
+           "name": "Rhythm Guitar"
+          }
+         },
+         {
+          "name": "add_effect",
+          "arguments": {
+           "effect": "Delay",
+           "track": "Lead Guitar"
+          }
+         }
+        ],
+        "errors": [],
+        "changes": [
+         "Tempo 107 \u2192 85 BPM",
+         "Drums: effects: none \u2192 Compressor",
+         "B Delay: effects: Delay \u2192 Delay > Reverb",
+         "Added track \"Lead Guitar\" (effects: Delay)",
+         "Added track \"Rhythm Guitar\""
+        ]
+       }
+      },
+      {
+       "t": 51430,
+       "type": "select",
+       "data": {
+        "tracks": [
+         3
+        ],
+        "mod": ""
+       }
+      },
+      {
+       "t": 55532,
+       "type": "device",
+       "data": {
+        "action": "add",
+        "track": 3,
+        "device": "Compressor",
+        "source": "browser"
+       }
+      },
+      {
+       "t": 71663,
+       "type": "select",
+       "data": {
+        "tracks": [
+         7
+        ],
+        "mod": ""
+       }
+      }
+     ],
+     "ai": [
+      {
+       "t": 5479,
+       "type": "mic",
+       "action": "start"
+      },
+      {
+       "t": 38269,
+       "type": "request",
+       "text": "add Reverb to the delay track add compressor to the base of the drums set the tempo to 85 BPM add two new tracks and lead guitar and rhythm guitar and then add delay to the lead guitar track",
+       "via": "voice",
+       "ms": 15422,
+       "modelMs": 11756,
+       "calls": [
+        {
+         "name": "add_effect",
+         "arguments": {
+          "effect": "Reverb",
+          "track": "B Delay"
+         }
+        },
+        {
+         "name": "add_effect",
+         "arguments": {
+          "effect": "Compressor",
+          "track": "Drums"
+         }
+        },
+        {
+         "name": "set_tempo",
+         "arguments": {
+          "bpm": 85
+         }
+        },
+        {
+         "name": "insert_track",
+         "arguments": {
+          "name": "Lead Guitar"
+         }
+        },
+        {
+         "name": "insert_track",
+         "arguments": {
+          "name": "Rhythm Guitar"
+         }
+        },
+        {
+         "name": "add_effect",
+         "arguments": {
+          "effect": "Delay",
+          "track": "Lead Guitar"
+         }
+        }
+       ],
+       "changes": [
+        "Tempo 107 \u2192 85 BPM",
+        "Drums: effects: none \u2192 Compressor",
+        "B Delay: effects: Delay \u2192 Delay > Reverb",
+        "Added track \"Lead Guitar\" (effects: Delay)",
+        "Added track \"Rhythm Guitar\""
+       ],
+       "errors": [],
+       "content": "",
+       "parseError": false
+      }
+     ],
+     "final": {
+      "tempo": 85,
+      "main": {
+       "vol": -5
+      },
+      "tracks": [
+       {
+        "id": "T1",
+        "name": "Drums",
+        "color": "#ff8f3d",
+        "group": "drums",
+        "vol": -4,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -17,
+         "B": -70
+        },
+        "devices": [
+         {
+          "id": "D3",
+          "type": "Compressor",
+          "on": true,
+          "params": {
+           "Thresh": -18,
+           "Ratio": 4,
+           "Attack": 10
+          }
+         }
+        ],
+        "clips": [
+         {
+          "id": "gc1",
+          "name": "Drums",
+          "start": 4,
+          "len": 20,
+          "offset": 4,
+          "sound": "kick",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T2",
+        "name": "Percussion",
+        "color": "#9bd96b",
+        "group": "drums",
+        "vol": -7,
+        "pan": 25,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -8,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc4",
+          "name": "Percussion",
+          "start": 0,
+          "len": 8,
+          "offset": 0,
+          "sound": "shaker",
+          "on": true
+         },
+         {
+          "id": "gc5",
+          "name": "Percussion",
+          "start": 12,
+          "len": 12,
+          "offset": 12,
+          "sound": "shaker",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T3",
+        "name": "Bass",
+        "color": "#3fd1a2",
+        "group": "drums",
+        "vol": -8,
+        "pan": 20,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [
+         {
+          "id": "d44",
+          "type": "Compressor",
+          "on": true,
+          "params": {
+           "Thresh": -18,
+           "Ratio": 4,
+           "Attack": 10
+          }
+         }
+        ],
+        "clips": [
+         {
+          "id": "gc6",
+          "name": "Bass",
+          "start": 0,
+          "len": 8,
+          "offset": 0,
+          "sound": "bass",
+          "on": true
+         },
+         {
+          "id": "gc7",
+          "name": "Bass",
+          "start": 12,
+          "len": 12,
+          "offset": 12,
+          "sound": "bass",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T4",
+        "name": "Guitar",
+        "color": "#7f9cf5",
+        "group": "drums",
+        "vol": -2,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -11,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc9",
+          "name": "Guitar",
+          "start": 4,
+          "len": 8,
+          "offset": 4,
+          "sound": "arp",
+          "on": true
+         },
+         {
+          "id": "gc10",
+          "name": "Guitar",
+          "start": 12,
+          "len": 12,
+          "offset": 12,
+          "sound": "arp",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T5",
+        "name": "Organ",
+        "color": "#8d8cf5",
+        "group": "drums",
+        "vol": -18,
+        "pan": 15,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [
+         {
+          "id": "hdT5",
+          "type": "Delay",
+          "on": true,
+          "params": {
+           "Time": 375,
+           "Feedback": 35,
+           "Dry/Wet": 25
+          }
+         }
+        ],
+        "clips": [
+         {
+          "id": "gc13",
+          "name": "Organ",
+          "start": 0,
+          "len": 12,
+          "offset": 0,
+          "sound": "pad",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T6",
+        "name": "Backing Vocals",
+        "color": "#d6a6f2",
+        "group": "bass",
+        "vol": -12,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc15",
+          "name": "Backing Vocals",
+          "start": 4,
+          "len": 8,
+          "offset": 4,
+          "sound": "choir",
+          "on": true
+         },
+         {
+          "id": "gc16",
+          "name": "Backing Vocals",
+          "start": 12,
+          "len": 12,
+          "offset": 12,
+          "sound": "choir",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "N4",
+        "name": "Lead Guitar",
+        "color": "#1aff2f",
+        "group": "other",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [
+         {
+          "id": "D6",
+          "type": "Delay",
+          "on": true,
+          "params": {
+           "Time": 375,
+           "Feedback": 35,
+           "Dry/Wet": 25
+          }
+         }
+        ],
+        "clips": []
+       },
+       {
+        "id": "N5",
+        "name": "Rhythm Guitar",
+        "color": "#25ffa8",
+        "group": "other",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": []
+       }
+      ],
+      "returns": [
+       {
+        "id": "A",
+        "name": "A Reverb",
+        "color": "#92a7ff",
+        "vol": -5,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "gd23",
+          "type": "Reverb",
+          "on": true,
+          "params": {
+           "Decay": 2.5,
+           "Dry/Wet": 100
+          }
+         }
+        ]
+       },
+       {
+        "id": "B",
+        "name": "B Delay",
+        "color": "#5cffe8",
+        "vol": -6,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "gd24",
+          "type": "Delay",
+          "on": true,
+          "params": {
+           "Time": 375,
+           "Feedback": 35,
+           "Dry/Wet": 100
+          }
+         },
+         {
+          "id": "D2",
+          "type": "Reverb",
+          "on": true,
+          "params": {
+           "Decay": 2,
+           "Dry/Wet": 25
+          }
+         }
+        ]
+       }
+      ],
+      "nextId": 6,
+      "metronome": false,
+      "transport": "stopped",
+      "marker": 0,
+      "loop": {
+       "on": false,
+       "start": 16,
+       "end": 24
+      },
+      "view": {
+       "selected": [
+        "Lead Guitar"
+       ],
+       "range": null,
+       "playhead": null
+      }
+     },
+     "rating": {
+      "seq": "4",
+      "ai_confidence": "5",
+      "redo": "Yes, I fixed it by hand",
+      "verify_time": "30 to 60 seconds"
+     }
+    },
+    {
+     "order": 2,
+     "pair": "P05",
+     "id": "P05b",
+     "scenario": "vocalBalance+recordingSetup",
+     "set": "standard",
+     "challenge": "",
+     "instruction": "1. Set Vocals volume to -4 dB\n2. Set Flute volume to -16 dB\n3. Add Reverb to Vocals\n4. Add three new tracks named Trumpet, Trombone and Saxophone\n5. Pan Trumpet 30 left and Saxophone 30 right",
+     "n_calls": 8,
+     "success": false,
+     "tp": 13,
+     "n_required": 14,
+     "n_changed": 14,
+     "errors": [
+      {
+       "type": "wrong value",
+       "key": "t:N5.pan",
+       "got": 50,
+       "want": 30
+      }
+     ],
+     "ms": 58780,
+     "events": [
+      {
+       "t": 42761,
+       "type": "assistant",
+       "data": {
+        "source": "assistant",
+        "calls": [
+         {
+          "name": "set_volume",
+          "arguments": {
+           "db": -4,
+           "track": "Vocals"
+          }
+         },
+         {
+          "name": "set_volume",
+          "arguments": {
+           "db": -16,
+           "track": "Flute"
+          }
+         },
+         {
+          "name": "add_effect",
+          "arguments": {
+           "effect": "Reverb",
+           "track": "Vocals"
+          }
+         },
+         {
+          "name": "insert_track",
+          "arguments": {
+           "name": "Trumpet"
+          }
+         },
+         {
+          "name": "insert_track",
+          "arguments": {
+           "name": "Trombone"
+          }
+         },
+         {
+          "name": "insert_track",
+          "arguments": {
+           "name": "Saxophone"
+          }
+         },
+         {
+          "name": "set_pan",
+          "arguments": {
+           "pan": -30,
+           "track": "Trumpet"
+          }
+         },
+         {
+          "name": "set_pan",
+          "arguments": {
+           "pan": 50,
+           "track": "Saxophone"
+          }
+         }
+        ],
+        "errors": [],
+        "changes": [
+         "Flute: volume: -12.0 dB \u2192 -16.0 dB",
+         "Vocals: volume: -8.0 dB \u2192 -4.0 dB",
+         "Vocals: effects: none \u2192 Reverb",
+         "Added track \"Trumpet\" (pan: 30L)",
+         "Added track \"Trombone\"",
+         "Added track \"Saxophone\" (pan: 50R)"
+        ]
+       }
+      },
+      {
+       "t": 46596,
+       "type": "select",
+       "data": {
+        "tracks": [
+         5
+        ],
+        "mod": ""
+       }
+      }
+     ],
+     "ai": [
+      {
+       "t": 3595,
+       "type": "mic",
+       "action": "start"
+      },
+      {
+       "t": 42764,
+       "type": "request",
+       "text": "set the vocals volume to -4 the set the flute volume to -16 add Reverb to the vocals add three new tracks and trumpet trombone and saxophone and then pan trumpet 30 left and saxophone right",
+       "via": "voice",
+       "ms": 20343,
+       "modelMs": 15464,
+       "calls": [
+        {
+         "name": "set_volume",
+         "arguments": {
+          "db": -4,
+          "track": "Vocals"
+         }
+        },
+        {
+         "name": "set_volume",
+         "arguments": {
+          "db": -16,
+          "track": "Flute"
+         }
+        },
+        {
+         "name": "add_effect",
+         "arguments": {
+          "effect": "Reverb",
+          "track": "Vocals"
+         }
+        },
+        {
+         "name": "insert_track",
+         "arguments": {
+          "name": "Trumpet"
+         }
+        },
+        {
+         "name": "insert_track",
+         "arguments": {
+          "name": "Trombone"
+         }
+        },
+        {
+         "name": "insert_track",
+         "arguments": {
+          "name": "Saxophone"
+         }
+        },
+        {
+         "name": "set_pan",
+         "arguments": {
+          "pan": -30,
+          "track": "Trumpet"
+         }
+        },
+        {
+         "name": "set_pan",
+         "arguments": {
+          "pan": 50,
+          "track": "Saxophone"
+         }
+        }
+       ],
+       "changes": [
+        "Flute: volume: -12.0 dB \u2192 -16.0 dB",
+        "Vocals: volume: -8.0 dB \u2192 -4.0 dB",
+        "Vocals: effects: none \u2192 Reverb",
+        "Added track \"Trumpet\" (pan: 30L)",
+        "Added track \"Trombone\"",
+        "Added track \"Saxophone\" (pan: 50R)"
+       ],
+       "errors": [],
+       "content": "",
+       "parseError": false
+      }
+     ],
+     "final": {
+      "tempo": 111,
+      "main": {
+       "vol": 0
+      },
+      "tracks": [
+       {
+        "id": "T1",
+        "name": "Drums",
+        "color": "#ff8f3d",
+        "group": "drums",
+        "vol": -2,
+        "pan": 10,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc1",
+          "name": "Drums",
+          "start": 0,
+          "len": 8,
+          "offset": 0,
+          "sound": "kick",
+          "on": true
+         },
+         {
+          "id": "gc2",
+          "name": "Drums",
+          "start": 12,
+          "len": 12,
+          "offset": 12,
+          "sound": "kick",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T2",
+        "name": "Bass",
+        "color": "#3fd1a2",
+        "group": "drums",
+        "vol": -9,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -8,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc3",
+          "name": "Bass",
+          "start": 0,
+          "len": 24,
+          "offset": 0,
+          "sound": "bass",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T3",
+        "name": "Piano",
+        "color": "#47c1f0",
+        "group": "bass",
+        "vol": -11,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc6",
+          "name": "Piano",
+          "start": 4,
+          "len": 8,
+          "offset": 4,
+          "sound": "keys",
+          "on": true
+         },
+         {
+          "id": "gc7",
+          "name": "Piano",
+          "start": 16,
+          "len": 8,
+          "offset": 16,
+          "sound": "keys",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T4",
+        "name": "Flute",
+        "color": "#f59ad0",
+        "group": "bass",
+        "vol": -16,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -20,
+         "B": -12
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc8",
+          "name": "Flute",
+          "start": 0,
+          "len": 12,
+          "offset": 0,
+          "sound": "lead",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T5",
+        "name": "Vocals",
+        "color": "#f27ac6",
+        "group": "music",
+        "vol": -4,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [
+         {
+          "id": "D2",
+          "type": "Reverb",
+          "on": true,
+          "params": {
+           "Decay": 2,
+           "Dry/Wet": 25
+          }
+         }
+        ],
+        "clips": [
+         {
+          "id": "gc10",
+          "name": "Vocals",
+          "start": 0,
+          "len": 12,
+          "offset": 0,
+          "sound": "lead",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "N3",
+        "name": "Trumpet",
+        "color": "#bffb00",
+        "group": "other",
+        "vol": 0,
+        "pan": -30,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": []
+       },
+       {
+        "id": "N4",
+        "name": "Trombone",
+        "color": "#1aff2f",
+        "group": "other",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": []
+       },
+       {
+        "id": "N5",
+        "name": "Saxophone",
+        "color": "#25ffa8",
+        "group": "other",
+        "vol": 0,
+        "pan": 50,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": []
+       }
+      ],
+      "returns": [
+       {
+        "id": "A",
+        "name": "A Reverb",
+        "color": "#92a7ff",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "gd13",
+          "type": "Reverb",
+          "on": true,
+          "params": {
+           "Decay": 2.5,
+           "Dry/Wet": 100
+          }
+         }
+        ]
+       },
+       {
+        "id": "B",
+        "name": "B Delay",
+        "color": "#5cffe8",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "gd14",
+          "type": "Delay",
+          "on": true,
+          "params": {
+           "Time": 375,
+           "Feedback": 35,
+           "Dry/Wet": 100
+          }
+         }
+        ]
+       }
+      ],
+      "nextId": 5,
+      "metronome": false,
+      "transport": "stopped",
+      "marker": 0,
+      "loop": {
+       "on": false,
+       "start": 16,
+       "end": 20
+      },
+      "view": {
+       "selected": [
+        "Vocals"
+       ],
+       "range": null,
+       "playhead": null
+      }
+     },
+     "rating": {
+      "seq": "4",
+      "ai_confidence": "6",
+      "redo": "No",
+      "verify_time": "Under 30 seconds"
+     }
+    },
+    {
+     "order": 3,
+     "pair": "P04",
+     "id": "P04a",
+     "scenario": "grooveCheck+stereoSpread",
+     "set": "standard",
+     "challenge": "",
+     "instruction": "1. Set tempo to 90 BPM\n2. Solo Drums and Bass\n3. Pan Guitar 20 left\n4. Pan Flute 20 right",
+     "n_calls": 5,
+     "success": true,
+     "tp": 5,
+     "n_required": 5,
+     "n_changed": 5,
+     "errors": [],
+     "ms": 65477,
+     "events": [
+      {
+       "t": 23821,
+       "type": "assistant",
+       "data": {
+        "source": "assistant",
+        "calls": [
+         {
+          "name": "set_tempo",
+          "arguments": {
+           "bpm": 90
+          }
+         },
+         {
+          "name": "set_solo",
+          "arguments": {
+           "soloed": true,
+           "track": "Drums"
+          }
+         },
+         {
+          "name": "set_pan",
+          "arguments": {
+           "pan": -20,
+           "track": "Guitar"
+          }
+         },
+         {
+          "name": "set_pan",
+          "arguments": {
+           "pan": 20,
+           "track": "Flute"
+          }
+         }
+        ],
+        "errors": [],
+        "changes": [
+         "Tempo 95 \u2192 90 BPM",
+         "Drums: soloed",
+         "Guitar: pan: C \u2192 20L",
+         "Flute: pan: C \u2192 20R"
+        ]
+       }
+      },
+      {
+       "t": 43398,
+       "type": "assistant",
+       "data": {
+        "source": "assistant",
+        "calls": [
+         {
+          "name": "set_solo",
+          "arguments": {
+           "soloed": true,
+           "track": "Bass"
+          }
+         }
+        ],
+        "errors": [],
+        "changes": [
+         "Bass: soloed"
+        ]
+       }
+      }
+     ],
+     "ai": [
+      {
+       "t": 2910,
+       "type": "mic",
+       "action": "start"
+      },
+      {
+       "t": 23824,
+       "type": "request",
+       "text": "set the BPM to 90 solo the drum and vase and then pan guitar 20 left and pan flute 20 right",
+       "via": "voice",
+       "ms": 10357,
+       "modelMs": 7918,
+       "calls": [
+        {
+         "name": "set_tempo",
+         "arguments": {
+          "bpm": 90
+         }
+        },
+        {
+         "name": "set_solo",
+         "arguments": {
+          "soloed": true,
+          "track": "Drums"
+         }
+        },
+        {
+         "name": "set_pan",
+         "arguments": {
+          "pan": -20,
+          "track": "Guitar"
+         }
+        },
+        {
+         "name": "set_pan",
+         "arguments": {
+          "pan": 20,
+          "track": "Flute"
+         }
+        }
+       ],
+       "changes": [
+        "Tempo 95 \u2192 90 BPM",
+        "Drums: soloed",
+        "Guitar: pan: C \u2192 20L",
+        "Flute: pan: C \u2192 20R"
+       ],
+       "errors": [],
+       "content": "",
+       "parseError": false
+      },
+      {
+       "t": 28810,
+       "type": "mic",
+       "action": "start"
+      },
+      {
+       "t": 43401,
+       "type": "request",
+       "text": "solo the bass",
+       "via": "voice",
+       "ms": 3273,
+       "modelMs": 2662,
+       "calls": [
+        {
+         "name": "set_solo",
+         "arguments": {
+          "soloed": true,
+          "track": "Bass"
+         }
+        }
+       ],
+       "changes": [
+        "Bass: soloed"
+       ],
+       "errors": [],
+       "content": "",
+       "parseError": false
+      }
+     ],
+     "final": {
+      "tempo": 90,
+      "main": {
+       "vol": 0
+      },
+      "tracks": [
+       {
+        "id": "T1",
+        "name": "Drums",
+        "color": "#ff8f3d",
+        "group": "drums",
+        "vol": -6,
+        "pan": 0,
+        "on": true,
+        "solo": true,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -29
+        },
+        "devices": [
+         {
+          "id": "gd1",
+          "type": "Compressor",
+          "on": true,
+          "params": {
+           "Thresh": -18,
+           "Ratio": 10,
+           "Attack": 10
+          }
+         }
+        ],
+        "clips": [
+         {
+          "id": "gc3",
+          "name": "Drums",
+          "start": 4,
+          "len": 20,
+          "offset": 4,
+          "sound": "kick",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T2",
+        "name": "Bass",
+        "color": "#3fd1a2",
+        "group": "drums",
+        "vol": -17,
+        "pan": 0,
+        "on": true,
+        "solo": true,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc4",
+          "name": "Bass",
+          "start": 0,
+          "len": 8,
+          "offset": 0,
+          "sound": "bass",
+          "on": true
+         },
+         {
+          "id": "gc5",
+          "name": "Bass",
+          "start": 12,
+          "len": 12,
+          "offset": 12,
+          "sound": "bass",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T3",
+        "name": "Guitar",
+        "color": "#7f9cf5",
+        "group": "bass",
+        "vol": -14,
+        "pan": -20,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -9,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc6",
+          "name": "Guitar",
+          "start": 0,
+          "len": 8,
+          "offset": 0,
+          "sound": "arp",
+          "on": true
+         },
+         {
+          "id": "gc7",
+          "name": "Guitar",
+          "start": 12,
+          "len": 12,
+          "offset": 12,
+          "sound": "arp",
+          "on": true
+         }
+        ]
+       },
+       {
+        "id": "T4",
+        "name": "Flute",
+        "color": "#f59ad0",
+        "group": "music",
+        "vol": -16,
+        "pan": 20,
+        "on": true,
+        "solo": false,
+        "arm": false,
+        "sends": {
+         "A": -70,
+         "B": -70
+        },
+        "devices": [],
+        "clips": [
+         {
+          "id": "gc8",
+          "name": "Flute",
+          "start": 8,
+          "len": 16,
+          "offset": 8,
+          "sound": "lead",
+          "on": true
+         }
+        ]
+       }
+      ],
+      "returns": [
+       {
+        "id": "A",
+        "name": "A Reverb",
+        "color": "#92a7ff",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "gd11",
+          "type": "Reverb",
+          "on": true,
+          "params": {
+           "Decay": 2.5,
+           "Dry/Wet": 100
+          }
+         }
+        ]
+       },
+       {
+        "id": "B",
+        "name": "B Delay",
+        "color": "#5cffe8",
+        "vol": 0,
+        "pan": 0,
+        "on": true,
+        "solo": false,
+        "devices": [
+         {
+          "id": "gd12",
+          "type": "Delay",
+          "on": true,
+          "params": {
+           "Time": 375,
+           "Feedback": 35,
+           "Dry/Wet": 100
+          }
+         }
+        ]
+       }
+      ],
+      "nextId": 1,
+      "metronome": false,
+      "transport": "stopped",
+      "marker": 0,
+      "loop": {
+       "on": false,
+       "start": 12,
+       "end": 20
+      },
+      "view": {
+       "selected": [
+        "Bass"
+       ],
+       "range": null,
+       "playhead": null
+      }
+     },
+     "rating": {
+      "seq": "4",
+      "ai_confidence": "6",
+      "redo": "Yes, I asked the assistant again",
+      "verify_time": "Under 30 seconds"
+     }
+    }
+   ],
+   "survey": {
+    "mental": "5",
+    "physical": "5",
+    "temporal": "5",
+    "performance": "5",
+    "effort": "5",
+    "frustration": "5",
+    "control": "3",
+    "umux_capabilities": "3",
+    "umux_easy": "5",
+    "did_asked": "2",
+    "check_easy": "3"
+   }
+  }
+ },
+ "final": {
+  "prefer": "1",
+  "daw": "Regularly",
+  "comment": "The assistant had a pretty good success rate of doing what I asked. But as someone who has worked with this software for 5+ years it is just easier and quicker for me to do it myself. It is probably more beneficial to someone with less experience who doesn't know where everything is. If I was a new user using this to help me learn the software, I would like for it to go more slowly and clearly highlight what it was changing to execute my requests. I also think the nested menus of a DAW make it harder to validate that the system worked as intended (for things like adding delay to vocals that are hidden on the main screen) when compared to assistants in text editors."
+ },
+ "finished": "2026-11-19T20:29:53.453Z",
+ "errors": []
+}
